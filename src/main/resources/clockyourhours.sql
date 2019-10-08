@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `copy` (
   KEY `BookISBN` (`BookISBN`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
+
 -- Dumping data for table `copy`
 --
 

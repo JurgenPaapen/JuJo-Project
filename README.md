@@ -1,6 +1,6 @@
-# JuJo-Project
+# Clock Your Hours
 ELU 2.1 Java Objectgeorienteerde applicatie
 
-Joost en Jurgen
+Joost Oomen en Jurgen Paapen
 
 
