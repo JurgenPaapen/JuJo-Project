@@ -16,11 +16,15 @@ public class Project {
 	private String type;
 	private String name;
 
-	public Project(String name, List client) {
-			this.name = name;
-			this.dateOfBirth = dateOfBirth;
-			this.children = new ArrayList<>();
-		}
+	public Project(Collection<User> user, Client client, Collection<Task> taskProject, Collection<Task_Project> task_Project, int ID, String type, String name) {
+		this.user = user;
+		this.client = client;
+		this.taskProject = taskProject;
+		this.task_Project = task_Project;
+		this.ID = ID;
+		this.type = type;
+		this.name = name;
+	}
 
 		public void addChild(String name){
 			children.add(name);
