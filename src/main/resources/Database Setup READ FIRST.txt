@@ -8,5 +8,5 @@ Database setup:
 
 * In MySQL:
 	1) maak een database aan genaamd 'clockyourhours'
-	2) importeer de file clockyourhours.sql
-	   nu worden alle tabellen aangemaakt en gevuld met data
+	2) run de file clockyourhours.sql
+	   nu worden alle tabellen aangemaakt

@@ -44,15 +44,7 @@ public class User {
 		throw new UnsupportedOperationException();
 	}
 
-	public void startTimer() {
-		// TODO - implement User.startTimer
-		throw new UnsupportedOperationException();
-	}
 
-	public void stopTimer() {
-		// TODO - implement User.stopTimer
-		throw new UnsupportedOperationException();
-	}
 
 	public void editClient() {
 		// TODO - implement User.editClient
