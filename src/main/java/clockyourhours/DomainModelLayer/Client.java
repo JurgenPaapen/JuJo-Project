@@ -8,7 +8,7 @@ import java.util.Objects;
 
 
 public class Client {
-		Collection<Project> project;
+		List<String> project;
 		private int ID;
 		private String companyName;
 		private String address;
@@ -17,8 +17,8 @@ public class Client {
 		private String country;
 		private String email;
 
-	public Client(Collection<Project> project, int ID, String companyName, String address, String zipCode, String city, String country, String email) {
-		this.project = project;
+	public Client(ArrayList project, int ID, String companyName, String address, String zipCode, String city, String country, String email) {
+	    this.project = project;
 		this.ID = ID;
 		this.companyName = companyName;
 		this.address = address;
@@ -26,5 +26,18 @@ public class Client {
 		this.city = city;
 		this.country = country;
 		this.email = email;
+        this.project = new ArrayList<>();
 	}
+
+    public List<String> getProject() {
+        return project;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
 }
