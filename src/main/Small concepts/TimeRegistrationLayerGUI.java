@@ -1,25 +1,15 @@
 
 //import com.sun.org.apache.xml.internal.resolver.helpers.FileURL;
 
-//import jdk.internal.joptsimple.internal.Strings;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Scanner;
 
 //import static sun.plugin.javascript.navig.JSType.URL;
 
 class TimeRegistrationLayerGUI extends JFrame implements ActionListener {
-//    Scanner input = new Scanner();
-    String input1 = "Message1";
-    String input2 = "Hee Jurgen kijk eens goed";
-    String input3 = "Het kan ook afzonderlijk";
-
-
-    String[] inputs = {input1, input2, input3};
-    String [] messagestrings = inputs;
+    String [] messagestrings = {"Message 1", "Message 2", "Message 3"};
     JComboBox cmbMessageList = new JComboBox(messagestrings);
     JLabel lblText = new JLabel();
 
@@ -35,7 +25,7 @@ class TimeRegistrationLayerGUI extends JFrame implements ActionListener {
 //        setIconImage(new ImageIcon(URL).getImage());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        cmbMessageList.setSelectedIndex(1);
+        cmbMessageList.setSelectedIndex(0);
         cmbMessageList.addActionListener(this);
         add(cmbMessageList);
         add(lblText);
@@ -46,11 +36,11 @@ class TimeRegistrationLayerGUI extends JFrame implements ActionListener {
             JComboBox cb = (JComboBox)e.getSource();
             String msg = (String)cb.getSelectedItem();
             switch (msg) {
-                case "Message1" : lblText.setText("You selected Message 1. :-)");
+                case "Message 1": lblText.setText("You selected Message 1. :-)");
                     break;
-                case "Hee Jurgen kijk eens goed" : lblText.setText("You selected Message 2. Well done");
+                case "Message 2": lblText.setText("You selected Message 2. Well done");
                     break;
-                case "Het kan ook afzonderlijk" : lblText.setText("You selected Message 3. Good Choice");
+                case "Message 3": lblText.setText("You selected Message 3. Good Choice");
                     break;
                 default: lblText.setText("Whoops. error");
             }
