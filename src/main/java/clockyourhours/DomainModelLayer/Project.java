@@ -6,10 +6,10 @@ public class Project {
 	private String name;
 	private Project project;
 	private Project projects;
-	private Task tasks;
+	private ArrayList tasks;
 
 
-	public Project(String name, Task tasks) {
+	public Project(String name, ArrayList<String> tasks) {
 		this.name = name;
 		this.tasks = tasks;
 
@@ -28,7 +28,7 @@ public class Project {
 	public String toString() {
 		return "Project{" +
 				"name='" + name + '\'' +
-				", taskProject=" + project +
+				", task=" + tasks +
 				'}';
 	}
 
