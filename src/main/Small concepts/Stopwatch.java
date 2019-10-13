@@ -7,6 +7,7 @@ class DiffDemo {
             long start = System.currentTimeMillis();
             System.out.println(new Date() + "\n");
             Thread.sleep(5 * 60 * 10);
+
             long end = System.currentTimeMillis();
             System.out.println(new Date() + "\n");
             long diff = (end - start);
