@@ -22,8 +22,8 @@ public class Main {
         Project p2;
         p2 = new Project("Dakkapel", "opbouw");
 
-        p2.addTask("Opbouw");
-        p2.addTask("Afwerking");
+//        p2.addTask("Opbouw");
+//        p2.addTask("Afwerking");
         System.out.println(p2);
 //        c1.addProject("Dakkapel", "");
         Project p1;

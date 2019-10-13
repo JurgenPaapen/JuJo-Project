@@ -1,5 +1,5 @@
 
-import com.sun.org.apache.xml.internal.resolver.helpers.FileURL;
+//import com.sun.org.apache.xml.internal.resolver.helpers.FileURL;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,7 +25,7 @@ class TimeRegistrationLayerGUI extends JFrame implements ActionListener {
 //        setIconImage(new ImageIcon(URL).getImage());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        cmbMessageList.setSelectedIndex(1);
+        cmbMessageList.setSelectedIndex(0);
         cmbMessageList.addActionListener(this);
         add(cmbMessageList);
         add(lblText);
