@@ -12,10 +12,10 @@ public class DBConnection {
 		// execution method.
 		private Statement statement;
 
-    public void getConnection(); {
-			connection = null;
-			statement = null;
-		}
+//    public void getConnection(); {
+//			connection = null;
+//			statement = null;
+//		}
 
 		public boolean openConnection() {
 			boolean result = false;
