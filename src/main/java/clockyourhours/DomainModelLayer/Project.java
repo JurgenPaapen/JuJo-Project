@@ -12,7 +12,6 @@ public class Project {
 	public Project(String name, ArrayList<String> tasks) {
 		this.name = name;
 		this.tasks = tasks;
-
 	}
 
 

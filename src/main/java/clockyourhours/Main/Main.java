@@ -35,10 +35,9 @@ public class Main {
 
         Client c1;
         c1 = new Client(p1,1, "Jansen Bouw", "Mary Zeldenrustlaan 165", "5122CH", "Rijen", "Netherlands", "joostoomen@hotmail.com");
-
-        /**
-         * Client 2 met een project en een taak
-         */
+/**
+ * Client 2 met een project en een taak
+ */
 
         ArrayList<String> t3 = new ArrayList<>();
         t3.add("inmeten");

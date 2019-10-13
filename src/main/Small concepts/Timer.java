@@ -29,23 +29,23 @@ public static class Tellerpaneel extends JPanel {
 
         startknop = new JButton("Start");
         stopknop = new JButton("Stop");
-        totaal = new JButton("totaal");
+//        totaal = new JButton("totaal");
 
         add(startknop);
         add(stopknop);
-        add(totaal);
+//        add(totaal);
 
         KnopHandler kh = new KnopHandler();
         startknop.addActionListener(kh);
         stopknop.addActionListener(kh);
-        totaal.addActionListener(kh);
+//        totaal.addActionListener(kh);
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(Color.BLUE);
         g.setFont(new Font("SansSerif", Font.BOLD, 14));
-        g.drawString("Teller = " + teller, 130, 80);
+        g.drawString("Teller = " + teller, 200, 300);
     }
 
     class TimerHandler implements ActionListener {
