@@ -1,29 +1,34 @@
 package clockyourhours.DomainModelLayer;
-
-import clockyourhours.project;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class Project {
 	private  String name;
-	private  List<String> projects;
+	private List<String> taskProject;
 
-	public Project(String name) {
+	public Project(String name, String tasks) {
 		this.name = name;
-		this.projects = new ArrayList<>();
+		this.taskProject = new ArrayList<>();
 	}
 
-	public void addProject(String name){
-		projects.add(name);
-		System.out.println(projects);
-
+	public void addTask(String name){
+		taskProject.add(name);
 	}
 
 	public String getName() {
 		return name;
 	}
+
+	@Override
+	public String toString() {
+		return "Project{" +
+				"name='" + name + '\'' +
+				", taskProject=" + taskProject +
+				'}';
+	}
+
+//	public List<Task> getTasks() {
+//		return taskProject;
+//	}
+
 }

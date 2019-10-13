@@ -1,14 +1,12 @@
 package clockyourhours.DomainModelLayer;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
 
 public class Client {
-		List<String> project;
+		Collection<Project> projects;
 		private int ID;
 		private String companyName;
 		private String address;
@@ -16,9 +14,10 @@ public class Client {
 		private String city;
 		private String country;
 		private String email;
+		List<Task> task;
 
-	public Client(ArrayList project, int ID, String companyName, String address, String zipCode, String city, String country, String email) {
-	    this.project = project;
+	public Client( int ID, String companyName, String address, String zipCode, String city, String country, String email) {
+
 		this.ID = ID;
 		this.companyName = companyName;
 		this.address = address;
@@ -26,11 +25,15 @@ public class Client {
 		this.city = city;
 		this.country = country;
 		this.email = email;
-        this.project = new ArrayList<>();
+        this.projects = new ArrayList<>();
 	}
 
-    public List<String> getProject() {
-        return project;
+    public void addProject(Project name, Task tasks){
+	    projects.add(name);
+    }
+
+    public Collection<Project> getProjects() {
+        return projects;
     }
 
     public String getCompanyName() {
@@ -40,4 +43,21 @@ public class Client {
     public String getEmail() {
         return email;
     }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "project=" + projects +
+                ", ID=" + ID +
+                ", companyName='" + companyName + '\'' +
+                ", address='" + address + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", city='" + city + '\'' +
+                ", country='" + country + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
+
+
+
