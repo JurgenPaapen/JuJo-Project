@@ -6,7 +6,7 @@ import java.util.List;
 
 
 public class Client {
-		Collection<Project> projects;
+		private Project projects;
 		private int ID;
 		private String companyName;
 		private String address;
@@ -14,10 +14,9 @@ public class Client {
 		private String city;
 		private String country;
 		private String email;
-		List<Task> task;
+		Project name;
 
-	public Client( int ID, String companyName, String address, String zipCode, String city, String country, String email) {
-
+	public Client( Project projects, int ID, String companyName, String address, String zipCode, String city, String country, String email) {
 		this.ID = ID;
 		this.companyName = companyName;
 		this.address = address;
@@ -25,14 +24,15 @@ public class Client {
 		this.city = city;
 		this.country = country;
 		this.email = email;
-        this.projects = new ArrayList<>();
+		this.projects = projects;
+
 	}
 
-    public void addProject(Project name, Task tasks){
-	    projects.add(name);
+    public void addProject(String name){
+	    projects.addTask(name);
     }
 
-    public Collection<Project> getProjects() {
+    public Project getProjects() {
         return projects;
     }
 
