@@ -5,11 +5,16 @@ import java.util.*;
 public class Project {
 	private String name;
 	private Project project;
+	private Project projects;
+	private Task tasks;
 
-	public Project(String name, String tasks) {
+
+	public Project(String name, Task tasks) {
 		this.name = name;
+		this.tasks = tasks;
 
 	}
+
 
 	public void addTask(String name){
 		project.addTask(name);

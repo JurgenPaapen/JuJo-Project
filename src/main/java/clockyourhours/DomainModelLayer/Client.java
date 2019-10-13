@@ -28,9 +28,9 @@ public class Client {
 
 	}
 
-    public void addProject(String name){
-	    projects.addTask(name);
-    }
+//    public void addProject(Project name){
+//	    projects.addProject(name);
+//    }
 
     public Project getProjects() {
         return projects;

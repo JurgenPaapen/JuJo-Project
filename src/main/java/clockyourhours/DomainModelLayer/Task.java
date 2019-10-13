@@ -10,4 +10,14 @@ public class Task {
 			this.name = name;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	@Override
+	public String toString() {
+		return "Task{" +
+				"name='" + name + '\'' +
+				'}';
+	}
 }
