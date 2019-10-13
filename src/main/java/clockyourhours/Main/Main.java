@@ -17,6 +17,7 @@ public class Main {
         // and Initialize an ArrayList with asList()
         Project p2;
         p2 = new Project("Dakkapel", "opbouw");
+//        p2.addProject("huis");
 
         Client c1;
         c1 = new Client(p2,1, "Jansen Bouw", "Mary Zeldenrustlaan 165", "5122CH", "Rijen", "Netherlands", "joostoomen@hotmail.com");
