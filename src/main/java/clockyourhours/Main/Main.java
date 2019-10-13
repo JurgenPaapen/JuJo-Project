@@ -39,14 +39,22 @@ public class Main {
         /**
          * Client 2 met een project en een taak
          */
-//        Task t2;
-//        t2 = new Task("afwerking");
-//
-//        Project p2;
-//        p2 = new Project("Tuinhuis", t2);
-//
-//        Client c2;
-//        c2 = new Client(p2,2, "fritsen Bouw", "Mary kees 165", "8765GB", "Groningen", "Netherlands", "fritsen@hotmail.com");
+
+        ArrayList<String> t3 = new ArrayList<>();
+        t3.add("inmeten");
+        t3.add("afwerking");
+
+        ArrayList<String> t4 = new ArrayList<>();
+        t4.add("tekenen");
+        t4.add("transport");
+
+        HashMap<String, ArrayList> p2 = new HashMap<>();
+
+        p2.put("Kozijnen",t3);
+        p2.put("Keuken",t4);
+
+        Client c2;
+        c2 = new Client(p2,2, "fritsen Bouw", "Mary kees 165", "8765GB", "Groningen", "Netherlands", "fritsen@hotmail.com");
 
 //               p3.addTask("kezen");
 //               p3.addTask("poetsen");
@@ -65,7 +73,7 @@ public class Main {
 //        c3 = new Client(p3,3, "Paapen Electra Bouw", "Mary truus 165", "4876PL", "Kaatsheuvel", "Netherlands", "Paapen@hotmail.com");
 
 
-        List<Client> clients = new ArrayList<>(Arrays.asList(c1));
+        List<Client> clients = new ArrayList<>(Arrays.asList(c1,c2));
 
         for (Client client : clients) {
             System.out.println("client " + client.getCompanyName() + " heeft de volgende projecten " + client.getProjects());
