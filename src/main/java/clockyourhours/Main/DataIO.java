@@ -8,8 +8,7 @@ import java.util.ArrayList;
 public class DataIO {
 
     public static void writePersonTOObjectFile(String fileName, ArrayList client) {
-        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileName)))
-        {
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileName))) {
             objectOutputStream.writeObject(client);
         } catch (IOException e) {
             e.printStackTrace();

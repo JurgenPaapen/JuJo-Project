@@ -3,7 +3,7 @@ import clockyourhours.DomainModelLayer.Client;
 import clockyourhours.DomainModelLayer.Project;
 import clockyourhours.DomainModelLayer.Task;
 import clockyourhours.DomainModelLayer.Project;
-import clockyourhours.project;
+
 
 import java.awt.*;
 

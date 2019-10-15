@@ -82,11 +82,11 @@ public class Main {
 
         for (Client client : clients) {
             for (Project project: client.getProjects()){
-                System.out.println("client " + client.getCompanyName() + " heeft de volgende projecten " + project + " met de volgende taken:  ");
+                System.out.println("client " + client.getCompanyName() + " heeft een project " + project + " met de volgende taken:  ");
                 for (Object task : project.getTask()){
                     System.out.print( task ) ;
                 }
-                System.out.println("\n");
+                System.out.println("");
 
         }
         }

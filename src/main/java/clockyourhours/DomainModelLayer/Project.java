@@ -38,7 +38,7 @@ public class Project implements employeeCosts, Serializable {
 	@Override
 	public String toString() {
 
-	    return projectName;
+	    return projectName.toUpperCase();
 
 	}
 
