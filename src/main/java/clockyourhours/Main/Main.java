@@ -16,46 +16,38 @@ public class Main {
 /**
  * Client 1 met een project en een taak
  */
+        Client c1 =  new Client(1, "Jansen Bouw", "Mary Zeldenrustlaan 165", "5122CH", "Rijen", "Netherlands", "joostoomen@hotmail.com");
+        Project p1 = new Project("Dakkapel", c1);
+        Task p1_task1 = new Task("opbouw", 25);
+        p1.addTask(p1_task1);
+        Task p1_task2 = new Task("afwerking", 45);
+        p1.addTask(p1_task2);
 
-        Project projectList = new Project();
-        Task taskList = new Task();
-        taskList.addTask("opbouw", 25);
-        taskList.addTask("afwerking", 45);
-        projectList.addProject("Dakkapel", taskList);
+        Project p2 = new Project("Tuinhuis", c1);
+        Task p2_task1 = new Task("grondwerk", 25);
+        p2.addTask(p2_task1);
+        Task p2_task2 = new Task("opbouw", 45);
+        p2.addTask(p2_task2);
 
-        System.out.println(taskList);
+        c1.addProject(p1);
+        c1.addProject(p2);
 
-        Task taskList2 = new Task();
-        taskList2.addTask("aanleg", 25);
-        taskList2.addTask("grondwerk", 45);
-
-        System.out.println(taskList2);
-
-        projectList.addProject("tuinhuis",taskList2);
-
-        System.out.println(projectList);
-
-        Client c1;
-        c1 = new Client(projectList,1, "Jansen Bouw", "Mary Zeldenrustlaan 165", "5122CH", "Rijen", "Netherlands", "joostoomen@hotmail.com");
 /**
  * Client 2 met een project en een taak
  */
-
-//        ArrayList<String> t3 = new ArrayList<>();
-//        t3.add("inmeten");
-//        t3.add("afwerking");
+//        projectList = new Project();
+//        taskList = new Task();
+//        taskList.addTask("afwerking", 25);
+//        taskList.addTask("inmeten", 45);
+//        projectList.addProject("Keuken", taskList);
 //
-//        ArrayList<String> t4 = new ArrayList<>();
-//        t4.add("tekenen");
-//        t4.add("transport");
-//
-//        HashMap<String,ArrayList > p2 = new HashMap<>();
-//
-//        p2.put("Kozijnen", t4);
-//        p2.put("Keuken",t4);
+//        taskList = new Task();
+//        taskList.addTask("inmeten", 25);
+//        taskList.addTask("plaatsen", 45);
+//        projectList.addProject("Kozijnen",taskList);
 //
 //        Client c2;
-//        c2 = new Client(p2,2, "fritsen Bouw", "Mary kees 165", "8765GB", "Groningen", "Netherlands", "fritsen@hotmail.com");
+//        c2 = new Client(projectList,2, "fritsen Bouw", "Mary kees 165", "8765GB", "Groningen", "Netherlands", "fritsen@hotmail.com");
 
 
         /**
@@ -82,12 +74,14 @@ public class Main {
         List<Client> clients = new ArrayList<>(Arrays.asList(c1));
 
         for (Client client : clients) {
-            System.out.println("client " + client.getCompanyName() + " heeft de volgende projecten " + projectList.getProject() + " " + taskList.getTaskList()) ;
+                System.out.println("client " + client.getCompanyName() + " heeft de volgende projecten " ) ;
+            System.out.println(client);
         }
+//
 
-        System.out.println(c1);
-        System.out.println(projectList);
-        System.out.println(taskList + " " + taskList2);
+//        System.out.println(c1);
+//        System.out.println(projectList);
+//        System.out.println(taskList + " " + taskList2);
 
 
 
