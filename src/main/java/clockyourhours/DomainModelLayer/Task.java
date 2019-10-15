@@ -3,7 +3,7 @@ package clockyourhours.DomainModelLayer;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Task {
+public class Task implements employeeCosts {
 
 	private String name;
 	private Integer costPerHour;
@@ -19,5 +19,10 @@ public class Task {
                 "name='" + name + '\'' +
                 ", costPerHour=" + costPerHour +
                 '}';
+    }
+
+    @Override
+    public void setCostCalculation() {
+
     }
 }

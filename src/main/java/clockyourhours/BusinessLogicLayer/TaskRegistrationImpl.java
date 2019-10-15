@@ -1,4 +1,9 @@
 package clockyourhours.BusinessLogicLayer;
 
-public class TaskRegistrationImpl {
+public class TaskRegistrationImpl implements RegistrationManager {
+
+    @Override
+    public void add() {
+
+    }
 }

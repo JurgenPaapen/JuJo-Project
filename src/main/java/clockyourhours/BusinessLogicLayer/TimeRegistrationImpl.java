@@ -1,14 +1,24 @@
 package clockyourhours.BusinessLogicLayer;
 
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class TimeRegistrationImpl {
 
-    public void startTimer() {
-        // TODO - implement User.startTimer
-        throw new UnsupportedOperationException();
+
+    public long startTimer() {
+        return System.currentTimeMillis();
     }
 
-    public void stopTimer() {
-        // TODO - implement User.stopTimer
-        throw new UnsupportedOperationException();
+    public long stopTimer(){
+            return System.currentTimeMillis();
     }
+
+    public long timeDifference(long end, long start){
+        long diff = ( end - start);
+            return diff ;
+    }
+
 }
