@@ -58,6 +58,8 @@ class SourceCodeProgram {
         frame.setPreferredSize(new Dimension(500   , 300));
         comboBox.setSize(new Dimension( 100,50));
         frame.add(comboBox);
+
+        frame.setPreferredSize(new Dimension(600, 300));
         frame.pack();
         frame.setVisible(true);
 
