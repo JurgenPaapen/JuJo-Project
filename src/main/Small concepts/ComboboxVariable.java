@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 class Item {
 
     private String name;
@@ -54,11 +55,14 @@ class SourceCodeProgram {
             }
         });
         JFrame frame = new JFrame();
+        frame.setPreferredSize(new Dimension(500   , 300));
+        comboBox.setSize(new Dimension( 100,50));
         frame.add(comboBox);
 
         frame.setPreferredSize(new Dimension(600, 300));
         frame.pack();
         frame.setVisible(true);
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

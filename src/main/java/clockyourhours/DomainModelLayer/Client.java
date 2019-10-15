@@ -1,5 +1,7 @@
 package clockyourhours.DomainModelLayer;
 
+import clockyourhours.project;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -7,7 +9,6 @@ import java.util.List;
 
 
 public class Client {
-		private HashMap projects;
 		private int ID;
 		private String companyName;
 		private String address;
@@ -15,9 +16,9 @@ public class Client {
 		private String city;
 		private String country;
 		private String email;
-		Project name;
+        private List<Project> projects = new ArrayList<>();
 
-	public Client(HashMap projects, int ID, String companyName, String address, String zipCode, String city, String country, String email) {
+	public Client(int ID, String companyName, String address, String zipCode, String city, String country, String email) {
 		this.ID = ID;
 		this.companyName = companyName;
 		this.address = address;
@@ -25,15 +26,13 @@ public class Client {
 		this.city = city;
 		this.country = country;
 		this.email = email;
-		this.projects = projects;
-
 	}
 
-//    public void addProject(Project name){
-//	    projects.addProject(name);
-//    }
+    public void addProject(Project project){
+	    projects.add(project);
+    }
 
-    public HashMap getProjects() {
+    public List<Project> getProjects() {
         return projects;
     }
 
