@@ -2,7 +2,7 @@ package clockyourhours.DomainModelLayer;
 import java.lang.reflect.Array;
 import java.util.*;
 
-public class Project {
+public class Project implements employeeCosts{
 	private String name;
 	private List<Task> tasks = new ArrayList<>();
 	private Client clientForThisProject;
@@ -40,4 +40,8 @@ public class Project {
 		return result;
 	}
 
+    @Override
+    public void setCostCalculation() {
+
+    }
 }
