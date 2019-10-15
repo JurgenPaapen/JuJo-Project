@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -54,6 +55,8 @@ class SourceCodeProgram {
         });
         JFrame frame = new JFrame();
         frame.add(comboBox);
+
+        frame.setPreferredSize(new Dimension(600, 300));
         frame.pack();
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
