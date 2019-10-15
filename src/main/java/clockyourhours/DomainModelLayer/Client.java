@@ -1,14 +1,13 @@
 package clockyourhours.DomainModelLayer;
 
-import clockyourhours.project;
-
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
 
-public class Client {
+public class Client implements Serializable {
 		private int ID;
 		private String companyName;
 		private String address;
@@ -27,6 +26,7 @@ public class Client {
 		this.country = country;
 		this.email = email;
 	}
+
 
     /**
      * Add project to client

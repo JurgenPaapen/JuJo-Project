@@ -1,11 +1,12 @@
 package clockyourhours.DomainModelLayer;
-import java.lang.reflect.Array;
+import java.io.Serializable;
 import java.util.*;
 
-public class Project implements employeeCosts{
+public class Project implements employeeCosts, Serializable {
 	private String projectName;
 	private List<Task> tasks = new ArrayList<>();
 	private Client clientForThisProject;
+
 
     public Project(String name, Client clientForThisProject) {
         this.projectName = name;
@@ -37,7 +38,7 @@ public class Project implements employeeCosts{
 	@Override
 	public String toString() {
 
-	    return projectName + "\n";
+	    return projectName;
 
 	}
 
