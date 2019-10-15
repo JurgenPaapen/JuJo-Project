@@ -28,6 +28,11 @@ public class Client {
 		this.email = email;
 	}
 
+    /**
+     * Add project
+     * @param project
+     */
+
     public void addProject(Project project){
 	    projects.add(project);
     }
