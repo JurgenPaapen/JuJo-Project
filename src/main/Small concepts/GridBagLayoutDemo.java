@@ -1,4 +1,7 @@
 
+import clockyourhours.DomainModelLayer.Project;
+import clockyourhours.DomainModelLayer.Task;
+
 import java.awt.*;
 
         import javax.swing.JButton;
@@ -38,23 +41,32 @@ public class GridBagLayoutDemo {
         c.gridy = 0;
         pane.add(button, c);
 
-        button = new JButton("Button 3");
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 0.5;
-        c.gridx = 2;
-        c.gridy = 0;
-        pane.add(button, c);
+//        button = new JButton("Button 3");
+//        c.fill = GridBagConstraints.HORIZONTAL;
+//        c.weightx = 0.5;
+//        c.gridx = 2;
+//        c.gridy = 0;
+//        pane.add(button, c);
 
-        button = new JButton("Long-Named Button 4");
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.ipady = 40;      //make this component tall
-        c.weightx = 0.0;
-        c.gridwidth = 3;
-        c.gridx = 0;
-        c.gridy = 1;
-        pane.add(button, c);
+//        button = new JButton("Long-Named Button 4");
+//        c.fill = GridBagConstraints.HORIZONTAL;
+//        c.ipady = 40;      //make this component tall
+//        c.weightx = 0.0;
+//        c.gridwidth = 3;
+//        c.gridx = 0;
+//        c.gridy = 1;
+//        pane.add(button, c);
 
-        button = new JButton("5");
+        for (Task task : Project.getTasks()) {
+            JButton taskButton = new JButton(task.getTaskName()+" (" + task.getCostPerHour() + ")");
+            pane.add(taskButton, c);
+        }
+
+
+
+
+
+        button = new JButton("STOP");
         c.fill = GridBagConstraints.HORIZONTAL;
         c.ipady = 0;       //reset to default
         c.weighty = 1.0;   //request any extra vertical space
