@@ -3,12 +3,12 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 public class Project implements employeeCosts{
-	private String name;
+	private String projectName;
 	private List<Task> tasks = new ArrayList<>();
 	private Client clientForThisProject;
 
     public Project(String name, Client clientForThisProject) {
-        this.name = name;
+        this.projectName = name;
         this.clientForThisProject = clientForThisProject;
     }
 
@@ -22,6 +22,10 @@ public class Project implements employeeCosts{
 		tasks.add(task);
 	}
 
+	public List getTask(){
+        return tasks;
+    }
+
     public void printTaskList() {
         System.out.println("You have " + tasks.size() + " items in your task list");
         for(int i=0; i< tasks.size(); i++) {
@@ -32,12 +36,9 @@ public class Project implements employeeCosts{
 
 	@Override
 	public String toString() {
-	    String result ="";
-	    result += name + "\n";
-        for (Task task : tasks) {
-            result += task + "\n";
-        }
-		return result;
+
+	    return projectName + "\n";
+
 	}
 
     @Override

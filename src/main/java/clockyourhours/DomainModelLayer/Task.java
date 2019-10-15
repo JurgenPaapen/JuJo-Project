@@ -5,20 +5,25 @@ import java.util.HashMap;
 
 public class Task implements employeeCosts {
 
-	private String name;
+	private String taskName;
 	private Integer costPerHour;
 
     public Task(String name, Integer costPerHour) {
-        this.name = name;
+        this.taskName = name;
         this.costPerHour = costPerHour;
+    }
+
+    public String getTaskName() {
+        return taskName;
+    }
+
+    public Integer getCostPerHour() {
+        return costPerHour;
     }
 
     @Override
     public String toString() {
-        return "Task{" +
-                "name='" + name + '\'' +
-                ", costPerHour=" + costPerHour +
-                '}';
+        return taskName + " kosten per uur " + costPerHour + "\n";
     }
 
     @Override

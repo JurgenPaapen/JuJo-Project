@@ -29,7 +29,7 @@ public class Client {
 	}
 
     /**
-     * Add project
+     * Add project to client
      * @param project
      */
 
@@ -37,6 +37,10 @@ public class Client {
 	    projects.add(project);
     }
 
+    /**
+     * show all projects from client
+     * @return
+     */
     public List<Project> getProjects() {
         return projects;
     }
