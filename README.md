@@ -18,6 +18,9 @@ Vooralsnog kiezen we ervoor om deze gegevens uit een file in te laten
 Het is ons nog niet gelukt om deze gegevens enkel in te laden zijn vanuit de database
 
 
+<a href="https://github.com/JurgenPaapen/JuJo-Project/tree/develop/src/main/resources">Resources</a>
+
 <a href="https://github.com/JurgenPaapen/JuJo-Project/blob/develop/src/main/resources/documentationLU1">LU1 documentatie</a>
 
 <a href="https://github.com/JurgenPaapen/JuJo-Project/blob/develop/src/main/resources/documentationLU2">LU2 documentatie</a>
+

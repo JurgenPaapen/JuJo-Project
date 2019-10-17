@@ -17,5 +17,5 @@ Wij hebben gebruikt gemaakt van Visual Paradigm om use cases te beschrijven en d
    Het ontwerp is nog onvolledig voor realisatie en als documentatie omdat de tijd om het ook helemaal uit te werken gewoonweg te kort was.  
     Object Oriëntatietechnieken hebben we zo veel mogelijk in de code als comments verwerkt.
     <h5> ION1: - Speci caties opstellen voor een (lokale) infrastructuur volgens een standaardmethode.</h5>
-    <p>De specicaties voor een lokale infrastructuur hebben we zo volledig mogelijk opgesteld zodat er een goed bruikbaar en helder ontwerp met betrekking tot de software
+    <p>De specificaties voor een lokale infrastructuur hebben we zo volledig mogelijk opgesteld zodat er een goed bruikbaar en helder ontwerp met betrekking tot de software
        (hardware) mapping is ontstaan.

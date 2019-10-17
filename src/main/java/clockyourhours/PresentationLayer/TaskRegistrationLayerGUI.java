@@ -64,11 +64,14 @@ public class TaskRegistrationLayerGUI implements Runnable {
  * Code to go through client arraylist and put  company name in a new String array.
  * This company name can be used to fil combobox
  */
-        Client[] clientString = new Client[clients.size()];
+//        Client[] clientString = new Client[clients.size()];
         int i = clients.size();
+
         int n = ++i;
+
         int cnt = 0;
         String[] newArray = new String[n];
+
             for (Client client :clients){
                 newArray[cnt] = client.getCompanyName();
                 cnt ++;
@@ -138,6 +141,11 @@ public class TaskRegistrationLayerGUI implements Runnable {
         c.gridy = 3;
         pane.add(button, c);
 
+        button.addActionListener(E ->{
+            text.setText(" inmeten");
+
+        });
+
         button = new JButton("opbouw");
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0.5;
@@ -145,12 +153,21 @@ public class TaskRegistrationLayerGUI implements Runnable {
         c.gridy = 3;
         pane.add(button, c);
 
+        button.addActionListener(E ->{
+            text.setText("opbouw");
+
+        });
+
         button = new JButton("afwerking");
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0.5;
         c.gridx = 0;
         c.gridy = 4;
         pane.add(button, c);
+        button.addActionListener(E ->{
+            text.setText(" afwerking");
+
+        });
 
         button = new JButton("voorlichting");
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -158,6 +175,10 @@ public class TaskRegistrationLayerGUI implements Runnable {
         c.gridx = 2;
         c.gridy = 4;
         pane.add(button, c);
+        button.addActionListener(E ->{
+            text.setText(" voorlichting");
+
+        });
 
 /**
  * creating a stop button to show the effect of an action listener
