@@ -2,7 +2,7 @@
 <img src="LOGO.jpg" alt="LOGO ClockYouHours"> 
 <h3>LU 2 Beheer OO: documentatie, testen in een eenvoudige context
 
-<h4><u>Joost Oomen en Jurgen Paapen</u>
+<h4><u>Joost Oomen en Jurgen Paapen</u></h4>
 
 In deze folder zijn de video bestanden te vinden waarmee we aantonen dat we OO beheer toepassen, deze videobestanden geven aan dat we 
 gebruik hebben gemaakt van de hieronder beschreven technieken. Op deze manier hebben we als team samen gewerkt.
