@@ -4,7 +4,7 @@
 
 <h4><u>Joost Oomen en Jurgen Paapen</u>
 
-In deze folder is te zien welke diagrammen we hebben gemaakt ten einde een volledig beeld van het project te kunnen geven.
+<p>In deze folder is te zien welke diagrammen we hebben gemaakt ten einde een volledig beeld van het project te kunnen geven.
 
 <h5>IAn1: Een infrastructuur analyseren volgens een standaardmethode en op basis van gegeven functionele eisen.</h5>
 
