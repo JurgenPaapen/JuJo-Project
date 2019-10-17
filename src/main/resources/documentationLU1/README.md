@@ -16,6 +16,6 @@ Wij hebben gebruikt gemaakt van Visual Paradigm om use cases te beschrijven en d
 <p>Het ontwerp voor de realisatie van software opgesteld op basis van gegeven specicaties. Hierbij hebben we zoveel mogelijk standaard modelleertechnieken gebruikt.
    Het ontwerp is nog onvolledig voor realisatie en als documentatie omdat de tijd om het ook helemaal uit te werken gewoonweg te kort was.  
     Object Oriëntatietechnieken hebben we zo veel mogelijk in de code als comments verwerkt.
-    <h5> ION1: - Speci caties opstellen voor een (lokale) infrastructuur volgens een standaardmethode.</h5>
+    <h5> ION1: - Specificaties opstellen voor een (lokale) infrastructuur volgens een standaardmethode.</h5>
     <p>De specicaties voor een lokale infrastructuur hebben we zo volledig mogelijk opgesteld zodat er een goed bruikbaar en helder ontwerp met betrekking tot de software
        (hardware) mapping is ontstaan.
