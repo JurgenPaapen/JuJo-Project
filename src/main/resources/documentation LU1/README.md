@@ -2,7 +2,7 @@
 <img src="LOGO.jpg" alt="LOGO ClockYouHours"> 
 <h3>LU 1 Ontwerp OO in een eenvoudige context.
 
-<h4><u>Joost Oomen en Jurgen Paapen</u>
+<h4><u>Joost Oomen en Jurgen Paapen</u></h4>
 
 <p>In deze folder is te zien welke diagrammen we hebben gemaakt ten einde een volledig beeld van het project te kunnen geven.
 
