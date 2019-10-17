@@ -2,7 +2,7 @@
 <img src="LOGO.jpg" alt="LOGO ClockYouHours"> 
 <h3>ELU 2.1 Java Objectgeorienteerde applicatie
 
-<h4><u>Joost Oomen en Jurgen Paapen</u>
+<h4><u>Joost Oomen en Jurgen Paapen</u></h4>
 
 Dit bestand bevat een totaal aan klassen welke in de applicatie zullen moeten gaan werken op het moment dat de applicatie door een gebruiker ingezet wordt.
 Bij het inleveren van dit product voor 2.1 is de tijd en kennis nog te beperkt om alle functionaliteiten op orde te hebben voor een volledige werking van de applicatie. 
