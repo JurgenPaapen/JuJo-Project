@@ -1,16 +1,16 @@
-
-import clockyourhours.DomainModelLayer.Client;
-import clockyourhours.DomainModelLayer.Project;
-import clockyourhours.DomainModelLayer.Task;
-import clockyourhours.DomainModelLayer.Project;
-
-
-import java.awt.*;
-
-        import javax.swing.JButton;
-        import javax.swing.JFrame;
-
-public class GridBagLayoutDemo {
+//
+//import clockyourhours.DomainModelLayer.Client;
+//import clockyourhours.DomainModelLayer.Project;
+//import clockyourhours.DomainModelLayer.Task;
+//import clockyourhours.DomainModelLayer.Project;
+//
+//
+//import java.awt.*;
+//
+//        import javax.swing.JButton;
+//        import javax.swing.JFrame;
+//
+//public class GridBagLayoutDemo {
 //    final static boolean shouldFill = true;
 //    final static boolean shouldWeightX = true;
 //    final static boolean RIGHT_TO_LEFT = false;
@@ -44,26 +44,23 @@ public class GridBagLayoutDemo {
 //        c.gridy = 0;
 //        pane.add(button, c);
 //
-////        button = new JButton("Button 3");
-////        c.fill = GridBagConstraints.HORIZONTAL;
-////        c.weightx = 0.5;
-////        c.gridx = 2;
-////        c.gridy = 0;
-////        pane.add(button, c);
+//        button = new JButton("Button 3");
+//        c.fill = GridBagConstraints.HORIZONTAL;
+//        c.weightx = 0.5;
+//        c.gridx = 2;
+//        c.gridy = 0;
+//        pane.add(button, c);
 //
-////        button = new JButton("Long-Named Button 4");
-////        c.fill = GridBagConstraints.HORIZONTAL;
-////        c.ipady = 40;      //make this component tall
-////        c.weightx = 0.0;
-////        c.gridwidth = 3;
-////        c.gridx = 0;
-////        c.gridy = 1;
-////        pane.add(button, c);
+//        button = new JButton("Long-Named Button 4");
+//        c.fill = GridBagConstraints.HORIZONTAL;
+//        c.ipady = 40;      //make this component tall
+//        c.weightx = 0.0;
+//        c.gridwidth = 3;
+//        c.gridx = 0;
+//        c.gridy = 1;
+//        pane.add(button, c);
 //
-//        for (Task task : Project.getTasks()) {
-//            JButton taskButton = new JButton(task.getTaskName()+" (" + task.getCostPerHour() + ")");
-//            pane.add(taskButton, c);
-//        }
+//
 //
 //
 //
@@ -98,7 +95,7 @@ public class GridBagLayoutDemo {
 //        frame.pack();
 //        frame.setVisible(true);
 //    }
-
+//
 //    public static void main(String[] args) {
 //        //Schedule a job for the event-dispatching thread:
 //        //creating and showing this application's GUI.
@@ -108,4 +105,4 @@ public class GridBagLayoutDemo {
 //            }
 //        });
 //    }
-}
+//}

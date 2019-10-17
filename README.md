@@ -1,4 +1,5 @@
 # <B>Clock Your Hours</B>
+<img src="LOGO.jpg" alt="LOGO ClockYouHours"> 
 <h3>ELU 2.1 Java Objectgeorienteerde applicatie
 
 <h4><u>Joost Oomen en Jurgen Paapen</u>
@@ -10,11 +11,10 @@ We hebben dan ook besloten om ons eerst te richten op de kern van de applicatie 
 binnen het project worden taken aangegeven waaruit gekozen kan worden. Elke taak kan een eigen uurloon bevatten maar dit is niet perse noodzakelijk.
 
 Het is de bedoeling dat deze gegevens in de toekomst toegevoegd/aangepast kunnen worden door een gebruiker en dit wordt opgeslagen in een database.
-<li>
-Vooralsnog kiezen we ervoor om deze gegevens in de main in te laden
+
 <li>
 Vooralsnog kiezen we ervoor om deze gegevens uit een file in te laten
 <li>
-Vooralsnog kiezen we ervoor dat deze gegevens enkel in te laden zijn vanuit de databas
+Het is ons nog niet gelukt om deze gegevens enkel in te laden zijn vanuit de databas
 
 

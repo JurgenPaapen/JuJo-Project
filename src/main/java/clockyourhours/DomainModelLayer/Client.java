@@ -1,10 +1,7 @@
 package clockyourhours.DomainModelLayer;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 
 public class Client implements Serializable {
@@ -65,6 +62,26 @@ public class Client implements Serializable {
                 ", country='" + country + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Client client = (Client) o;
+        return ID == client.ID &&
+                Objects.equals(companyName, client.companyName) &&
+                Objects.equals(address, client.address) &&
+                Objects.equals(zipCode, client.zipCode) &&
+                Objects.equals(city, client.city) &&
+                Objects.equals(country, client.country) &&
+                Objects.equals(email, client.email) &&
+                Objects.equals(projects, client.projects);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ID, companyName, address, zipCode, city, country, email, projects);
     }
 }
 

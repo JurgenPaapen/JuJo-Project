@@ -1,7 +1,6 @@
 package clockyourhours.PresentationLayer;
 
 import clockyourhours.DomainModelLayer.Project;
-import clockyourhours.DomainModelLayer.Task;
 
 import javax.swing.*;
 import java.awt.*;

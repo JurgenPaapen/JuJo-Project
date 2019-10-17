@@ -27,6 +27,10 @@ public class Project implements employeeCosts, Serializable {
         return tasks;
     }
 
+    public String getProjectName() {
+        return projectName;
+    }
+
     public void printTaskList() {
         System.out.println("You have " + tasks.size() + " items in your task list");
         for(int i=0; i< tasks.size(); i++) {
