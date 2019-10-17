@@ -23,19 +23,16 @@ public class Project implements employeeCosts, Serializable {
 		tasks.add(task);
 	}
 
+    /**
+     *
+     * @return task of project
+     */
 	public List getTask(){
         return tasks;
     }
 
     public String getProjectName() {
         return projectName;
-    }
-
-    public void printTaskList() {
-        System.out.println("You have " + tasks.size() + " items in your task list");
-        for(int i=0; i< tasks.size(); i++) {
-            System.out.println((i+1) + ". " + tasks.get(i));
-        }
     }
 
 
@@ -47,7 +44,7 @@ public class Project implements employeeCosts, Serializable {
 	}
 
     @Override
-    public void setCostCalculation() {
+    public void costCalculation() {
 
     }
 }

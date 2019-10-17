@@ -42,10 +42,18 @@ public class Client implements Serializable {
         return projects;
     }
 
+    /**
+     *
+     * @return companyname of client
+     */
     public String getCompanyName() {
         return companyName;
     }
 
+    /**
+     *
+     * @return emailAddress of client
+     */
     public String getEmail() {
         return email;
     }
@@ -64,6 +72,11 @@ public class Client implements Serializable {
                 '}';
     }
 
+    /**
+     * code to be sure 2 arraylists will be compared the right way (content and not location in memoty)
+     * @param o
+     * @return
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

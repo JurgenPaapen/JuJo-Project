@@ -6,6 +6,11 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class DataIO {
+    /**
+     * code to write client
+     * @param fileName
+     * @param client
+     */
 
     public static void writePersonTOObjectFile(String fileName, ArrayList client) {
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileName))) {

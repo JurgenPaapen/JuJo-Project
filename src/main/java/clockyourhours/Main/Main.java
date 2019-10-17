@@ -1,5 +1,6 @@
 package clockyourhours.Main;
 
+import clockyourhours.BusinessLogicLayer.TimeRegistrationImpl;
 import clockyourhours.DomainModelLayer.Client;
 import clockyourhours.DomainModelLayer.Project;
 import clockyourhours.DomainModelLayer.Task;
@@ -84,7 +85,9 @@ public class Main {
         String tempFilePath = tempFile.getAbsolutePath();
 
 
-        //code die we gebruikt hebben om de gegevens naar de file weg te schrijven.
+        /**
+         * Code we used to write the data to a file
+         */
 
         System.out.println(tempFilePath);
         DataIO.writePersonTOObjectFile(tempFilePath, clients);
@@ -104,8 +107,8 @@ public class Main {
         }
         SwingUtilities.invokeLater(new TaskRegistrationLayerGUI(clients));
     }
-
 }
+
 
 /**
  * code which we used to export to the file It contains client data and connected projects and tasks within those projects.
@@ -175,8 +178,12 @@ public class Main {
 //            TimeRegistrationImpl start = new TimeRegistrationImpl();
 //            long start1 = start.startTimer();
 //            System.out.println(start1);
-//            Thread.sleep(5 * 60 * 10);
-//            TimeRegistrationImpl end = new TimeRegistrationImpl();
+//                    try {
+//                        Thread.sleep(5 * 60 * 10);
+//                    } catch (InterruptedException e1) {
+//                        e1.printStackTrace();
+//                    }
+//        TimeRegistrationImpl end = new TimeRegistrationImpl();
 //            long end1 = end.stopTimer();
 //            System.out.println(end1);
 //            TimeRegistrationImpl diff = new TimeRegistrationImpl();

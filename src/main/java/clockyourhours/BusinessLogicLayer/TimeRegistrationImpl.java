@@ -8,15 +8,15 @@ import java.util.Date;
 public class TimeRegistrationImpl {
 
 
-    public long startTimer() {
+    public static long startTimer() {
         return System.currentTimeMillis();
     }
 
-    public long stopTimer(){
+    public static long stopTimer(){
             return System.currentTimeMillis();
     }
 
-    public long timeDifference(long end, long start){
+    public static long timeDifference(long end, long start){
         long diff = ( end - start);
             return diff ;
     }

@@ -15,7 +15,7 @@ Het is de bedoeling dat deze gegevens in de toekomst toegevoegd/aangepast kunnen
 <li>
 Vooralsnog kiezen we ervoor om deze gegevens uit een file in te laten
 <li>
-Het is ons nog niet gelukt om deze gegevens enkel in te laden zijn vanuit de databas
+Het is ons nog niet gelukt om deze gegevens enkel in te laden zijn vanuit de database
 
 
 <a href="https://github.com/JurgenPaapen/JuJo-Project/blob/develop/src/main/resources/documentationLU1">LU1 documentatie</a>

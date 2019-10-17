@@ -28,7 +28,7 @@ public class Task implements employeeCosts, Serializable {
     }
 
     @Override
-    public void setCostCalculation() {
+    public void costCalculation() {
 
     }
 }
