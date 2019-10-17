@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="JuJo-Project" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="clockyourhours.Main.Main" />
+    <module name="JuJo-Project" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
