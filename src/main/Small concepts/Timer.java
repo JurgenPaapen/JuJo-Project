@@ -29,11 +29,11 @@ public static class Tellerpaneel extends JPanel {
 
         startknop = new JButton("Start");
         stopknop = new JButton("Stop");
-//        totaal = new JButton("totaal");
+        totaal = new JButton("totaal");
 
         add(startknop);
         add(stopknop);
-//        add(totaal);
+        add(totaal);
 
         KnopHandler kh = new KnopHandler();
         startknop.addActionListener(kh);

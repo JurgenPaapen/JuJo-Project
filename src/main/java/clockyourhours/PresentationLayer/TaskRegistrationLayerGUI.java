@@ -6,6 +6,7 @@ import clockyourhours.DomainModelLayer.Project;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -37,7 +38,7 @@ public class TaskRegistrationLayerGUI implements Runnable {
          * Configuring Frame and size an visability
          */
         frame = new JFrame("Clock Your Hours");
-        frame.setPreferredSize(new Dimension(500, 300));
+        frame.setPreferredSize(new Dimension(400, 500));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         createComponents(frame.getContentPane());
         frame.pack();
@@ -50,8 +51,11 @@ public class TaskRegistrationLayerGUI implements Runnable {
             pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         }
         JTextArea text;
+//        JTextArea text2;
         JButton button;
         JButton stopbutton;
+        JButton starttimer;
+        JButton total;
         JComboBox comboBox;
         pane.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -70,10 +74,10 @@ public class TaskRegistrationLayerGUI implements Runnable {
         int n = i++;
         int cnt = 0;
         String[] newArray = new String[n];
-            for (Client client :clients){
-                newArray[cnt] = client.getCompanyName();
-                cnt ++;
-            }
+        for (Client client : clients) {
+            newArray[cnt] = client.getCompanyName();
+            cnt++;
+        }
 
         /**
          * constructing combobox with new array (with client company name
@@ -160,6 +164,11 @@ public class TaskRegistrationLayerGUI implements Runnable {
         c.gridy = 4;
         pane.add(button, c);
 
+        button.addActionListener(E -> {
+            text.setText(" Stop Timer");
+
+        });
+
 /**
  * creating a stop button to show the effect of an action listener
  */
@@ -169,16 +178,38 @@ public class TaskRegistrationLayerGUI implements Runnable {
         c.ipady = 0;       //reset to default
         c.weighty = 1.0;   //request any extra vertical space
         c.anchor = GridBagConstraints.PAGE_END; //bottom of space
-        c.insets = new Insets(10, 0, 0, 0);  //top padding
+//        c.insets = new Insets(10, 0, 0, 0);  //top padding
         c.gridx = 2;       //aligned with button 2
         c.gridwidth = 2;   //2 columns wide
         c.gridy = 5;       //third row
         pane.add(stopbutton, c);
 
-        stopbutton.addActionListener(E ->{
-            text.setText(" wil je stoppen?");
-
+        stopbutton.addActionListener(E -> {
+            text.setText(" Stop Timer");
         });
-    }
 
-}
+        starttimer = new JButton("START");
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 0.5;
+        c.gridx = 0;
+        c.gridy = 5;
+        pane.add(starttimer, c);
+
+        starttimer.addActionListener(E -> {
+            text.setText(" Start Timer");
+        });
+
+
+        total = new JButton("TOTAAL");
+        c.weightx = 0.5;
+        c.gridx = 1;
+        c.gridy = 6;
+        c.weighty = 0.0;   //request any extra vertical space
+        pane.add(total, c);
+
+        total.addActionListener(E -> {
+            text.setText(" Totaal");
+        });
+
+
+}}
