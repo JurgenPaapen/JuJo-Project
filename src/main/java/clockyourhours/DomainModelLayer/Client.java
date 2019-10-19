@@ -24,6 +24,9 @@ public class Client implements Serializable {
 		this.email = email;
 	}
 
+    public int getID() {
+        return ID;
+    }
 
     /**
      * Add project to client

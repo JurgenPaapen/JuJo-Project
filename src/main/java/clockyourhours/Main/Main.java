@@ -1,6 +1,9 @@
 package clockyourhours.Main;
 
+import clockyourhours.BusinessLogicLayer.ClientRegistrationImpl;
+import clockyourhours.BusinessLogicLayer.TaskRegistrationImpl;
 import clockyourhours.BusinessLogicLayer.TimeRegistrationImpl;
+import clockyourhours.DataStorageLayer.ClientRegistrationDAO;
 import clockyourhours.DomainModelLayer.Client;
 import clockyourhours.DomainModelLayer.Project;
 import clockyourhours.DomainModelLayer.Task;
@@ -105,7 +108,17 @@ public class Main {
 
             }
         }
-        SwingUtilities.invokeLater(new TaskRegistrationLayerGUI(clients));
+
+        /**
+         * adding a project to a client in the database
+         */
+        int clientID = clients.get(1).getID();
+        ClientRegistrationImpl.add("Kantoortuin", clientID);
+
+        /**
+         * opening GUI frame
+         */
+//        SwingUtilities.invokeLater(new TaskRegistrationLayerGUI(clients));
     }
 }
 

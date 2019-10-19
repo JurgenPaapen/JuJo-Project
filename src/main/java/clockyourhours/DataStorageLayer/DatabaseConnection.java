@@ -2,7 +2,7 @@ package clockyourhours.DataStorageLayer;
 
 import java.sql.*;
 
-public class DBConnection {
+public class DatabaseConnection {
 
 		private Connection connection;
 
@@ -11,7 +11,7 @@ public class DBConnection {
 		// be closed as you would do when it was a local variable in the query
 		// execution method.
 		private Statement statement;
-
+//
 //    public void getConnection(); {
 //			connection = null;
 //			statement = null;

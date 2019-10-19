@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="mariadb-java-client-2.4.4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../TMCProjects/ercoargante-libraryworkedexample-4094f48aa037/lib/mariadb-java-client-2.4.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../TMCProjects/ercoargante-libraryworkedexample-4094f48aa037/lib/mysql-connector-java-8.0.17.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
