@@ -110,10 +110,11 @@ public class Main {
         }
 
         /**
-         * adding a project to a client in the database
+         * adding a project to client fritsen in the database
          */
-        int clientID = clients.get(1).getID();
-        ClientRegistrationImpl.add("Kantoortuin", clientID);
+//        ClientRegistrationImpl fritsen = new ClientRegistrationImpl();
+//        int clientID = clients.get(1).getID();
+//        fritsen.add("Kantoortuin", clientID);
 
         /**
          * opening GUI frame

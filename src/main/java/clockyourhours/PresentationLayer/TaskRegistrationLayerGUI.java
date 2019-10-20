@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static clockyourhours.BusinessLogicLayer.TimeRegistrationImpl.*;
-import static com.sun.java.accessibility.util.AWTEventMonitor.addActionListener;
+//import static com.sun.java.accessibility.util.AWTEventMonitor.addActionListener;
 
 
 public class TaskRegistrationLayerGUI implements Runnable {
@@ -74,7 +74,6 @@ public class TaskRegistrationLayerGUI implements Runnable {
  */
         Client[] clientString = new Client[clients.size()];
         int i = clients.size();
-//        int n = ++i;
         int n = i++;
         int cnt = 0;
         String[] newArray = new String[n];

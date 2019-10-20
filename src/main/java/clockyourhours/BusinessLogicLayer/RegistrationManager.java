@@ -2,5 +2,5 @@ package clockyourhours.BusinessLogicLayer;
 
 public interface RegistrationManager {
 
-//    abstract void add();
+     void add(String name, int ID);
 }

@@ -24,8 +24,8 @@ public class DatabaseConnection {
 				try {
 					// Try to create a connection with the library database
 					connection = DriverManager.getConnection(
-//							"jdbc:mariadb://localhost:8889/clockyourhours", "root", "root");
-							"jdbc:mariadb://localhost:3306/clockyourhours", "root", "");
+							"jdbc:mariadb://localhost:8889/clockyourhours", "root", "root");
+//							"jdbc:mariadb://localhost:3306/clockyourhours", "root", "");
 
 					if (connection != null) {
 						statement = connection.createStatement();
