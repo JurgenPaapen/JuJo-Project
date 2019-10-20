@@ -12,7 +12,7 @@ public class DataIO {
      * @param client
      */
 
-    public static void writePersonTOObjectFile(String fileName, ArrayList client) {
+    public static void writeToObjectFile(String fileName, ArrayList client) {
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileName))) {
             objectOutputStream.writeObject(client);
         } catch (IOException e) {

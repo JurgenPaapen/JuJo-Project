@@ -13,11 +13,6 @@ public class Project implements employeeCosts, Serializable {
         this.clientForThisProject = clientForThisProject;
     }
 
-    //	public Project(String name) {
-//		this.name = name;
-//		this.tasks = new ArrayList<>();
-//	}
-
 
 	public void addTask(Task task){
 		tasks.add(task);

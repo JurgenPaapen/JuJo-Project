@@ -10,10 +10,4 @@ public class ClientRegistrationImpl implements RegistrationManager {
         ClientRegistrationDAO.addProjectToDatabase(query);
     }
 
-//    @Override
-//    public static void add(String projectName, int IDClient, String client) {
-//
-//        String query = "INSERT INTO project (ProjectName, ClientID) " + "VALUES (" + projectName + "," + IDClient + ")";
-//        ClientRegistrationDAO.addProjectToDatabase(query);
-
     }

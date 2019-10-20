@@ -1,8 +1,7 @@
 package clockyourhours.DomainModelLayer;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
+
 
 public class Task implements employeeCosts, Serializable {
 

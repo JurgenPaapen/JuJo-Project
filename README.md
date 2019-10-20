@@ -13,7 +13,7 @@ binnen het project worden taken aangegeven waaruit gekozen kan worden. Elke taak
 Het is de bedoeling dat deze gegevens in de toekomst toegevoegd/aangepast kunnen worden door een gebruiker en dit wordt opgeslagen in een database.
 
 <li>
-Vooralsnog kiezen we ervoor om deze gegevens uit een file in te laten
+Vooralsnog kiezen we ervoor om deze gegevens uit een file in te laden
 <li>
 Het is ons nog niet gelukt om deze gegevens enkel in te laden zijn vanuit de database
 

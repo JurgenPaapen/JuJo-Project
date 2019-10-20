@@ -29,7 +29,7 @@ public class testDataIO {
 
         ArrayList<Client> clientBefore = new ArrayList<>(Arrays.asList(clientBefore1,clientBefore2));
         //Act
-        DataIO.writePersonTOObjectFile(tempFilePath, clientBefore);
+        DataIO.writeToObjectFile(tempFilePath, clientBefore);
         ArrayList<Client> clientAfter = DataIO.readFromObjectFile(tempFilePath);
         //Assert
         Assertions.assertEquals(clientBefore, clientAfter);

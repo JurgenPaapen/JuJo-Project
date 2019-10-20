@@ -1,9 +1,5 @@
 package clockyourhours.BusinessLogicLayer;
 
-import java.sql.Time;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 public class TimeRegistrationImpl {
 

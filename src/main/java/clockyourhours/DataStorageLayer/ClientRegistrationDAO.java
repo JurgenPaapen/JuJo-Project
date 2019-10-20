@@ -1,7 +1,6 @@
 package clockyourhours.DataStorageLayer;
 
-import java.sql.ResultSet;
-import java.sql.Statement;
+
 
 public class ClientRegistrationDAO {
 
