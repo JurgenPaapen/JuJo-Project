@@ -118,7 +118,7 @@ public class Main {
         /**
          * opening GUI frame
          */
-//        SwingUtilities.invokeLater(new TaskRegistrationLayerGUI(clients));
+        SwingUtilities.invokeLater(new TaskRegistrationLayerGUI(clients));
     }
 }
 

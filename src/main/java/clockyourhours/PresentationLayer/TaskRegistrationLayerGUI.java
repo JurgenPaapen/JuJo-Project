@@ -7,12 +7,16 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import static clockyourhours.BusinessLogicLayer.TimeRegistrationImpl.*;
+import static com.sun.java.accessibility.util.AWTEventMonitor.addActionListener;
 
 
 public class TaskRegistrationLayerGUI implements Runnable {
@@ -184,9 +188,9 @@ public class TaskRegistrationLayerGUI implements Runnable {
         c.gridy = 5;       //third row
         pane.add(stopbutton, c);
 
-        stopbutton.addActionListener(E -> {
-            text.setText(" Stop Timer");
-        });
+//        stopbutton.addActionListener(E -> {
+//            text.setText(" Stop Timer");
+//        });
 
         starttimer = new JButton("START");
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -195,9 +199,9 @@ public class TaskRegistrationLayerGUI implements Runnable {
         c.gridy = 5;
         pane.add(starttimer, c);
 
-        starttimer.addActionListener(E -> {
-            text.setText(" Start Timer");
-        });
+//        starttimer.addActionListener(E -> {
+//            text.setText(" Start Timer");
+//        });
 
 
         total = new JButton("TOTAAL");
@@ -207,9 +211,27 @@ public class TaskRegistrationLayerGUI implements Runnable {
         c.weighty = 0.0;   //request any extra vertical space
         pane.add(total, c);
 
-        total.addActionListener(E -> {
-            text.setText(" Totaal");
+//        total.addActionListener(E -> {
+//            text.setText(" Totaal");
+//        });
+
+//    ButtonAction nog aanpassen, werkt nog niet
+
+        button.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == starttimer)
+                    startTimer();
+                if (e.getSource() == stopbutton)
+                    stopTimer();
+                if (e.getSource() == total)
+                    text.setText("verstreken tijd" + timeDifference(stopTimer(), startTimer()));
+
+//hier moet het totaal nog weergegeven worden in textArea
+
+            }
         });
+    }
+}
 
 
-}}

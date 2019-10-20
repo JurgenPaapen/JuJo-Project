@@ -38,7 +38,7 @@ public static class Tellerpaneel extends JPanel {
         KnopHandler kh = new KnopHandler();
         startknop.addActionListener(kh);
         stopknop.addActionListener(kh);
-//        totaal.addActionListener(kh);
+        totaal.addActionListener(kh);
     }
 
     public void paintComponent(Graphics g) {

@@ -26,5 +26,6 @@
     </orderEntry>
     <orderEntry type="library" name="org.hamcrest:java-hamcrest:2.0.0.0" level="project" />
     <orderEntry type="library" name="mariadb-java-client-2.4.4" level="project" />
+    <orderEntry type="library" name="mariadb-java-client-2.4.41" level="project" />
   </component>
 </module>
