@@ -1,0 +1,363 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Desktop Wireframe - TaskUI</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initWireframeDiagram();">
+	<div style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;" id="spotlight_top">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;" id="spotlight_bottom">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;" id="spotlight_left">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;" id="spotlight_right">
+	</div>
+	<canvas width="100" style="position:absolute; z-index:2; visibility:hidden" id="spotlight_c" height="100">
+	</canvas>
+	<div style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" id="spotLightResourcesTop">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+<a href="#top"><img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>				</td>
+				<td>
+<a href="javascript:clearSpotLightFromOpenSpecButton();"><img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" id="spotLightResourcesRight">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+<a href="#top"><img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>				</td>
+			</tr>
+			<tr>
+				<td>
+<a href="javascript:clearSpotLightFromOpenSpecButton();"><img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute;z-index:4;visibility:hidden" id="linkPopupMenuLayer">
+		<table border="0" width="100%" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" id="linkPopupMenuTable">
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="referenceIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="subdiagramIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="transitorIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="documentationIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		JavaBlok2.1	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div style="position:absolute; z-index:21; visibility:hidden" id="referencedBys">
+		<table border="0" width="100%" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" id="referencedBysTable">
+		</table>
+	</div>
+	<div style="position:absolute; z-index:21; visibility:hidden" id="vplink">
+		<table border="1" cellpadding="0" cellspacing="0" bordercolor="#A9BFD3">
+			<tr>
+				<td>
+					<table border="0" cellpadding="0" width="100%" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+								<select onchange="vpLinkToggleName()" id="vplink-linkType">
+	<option value="Project Link">Project Link</option>
+	<option value="Page URL">Page URL</option>
+</select>
+							</td>
+							<td style="font-size: 12px;" align="right">
+								<input onclick="javascript: vpLinkToggleName()" id="vplink-checkbox" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+<a href="Requirement_S8DUJraEiMROoWg1.html" class="PageParentTitle">Requirement : Requirement</a>	</p>
+	<p class="PageTitle">
+		<span id="PageTitleText">
+			Desktop Wireframe - TaskUI		</span>
+<a onclick="javascript: showVpLink('JavaBlok2.1.vpp://diagram/P84zhbaGAqFkFTYY', 'TaskUI\nJavaBlok2.1.vpp://diagram/P84zhbaGAqFkFTYY', 'TaskUI', this); return false;" style="padding-left: 16px; font-size: 12px" href="#"><img src="../images/icons/link.png" border="0"> link</a>	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table border="0" cellpadding="0" width="auto" cellspacing="0" style="position: absolute; top: 0; left: 0; z-index: 20;">
+			<tr>
+				<td>
+<a href="javascript:showWireframeStatesDialog()"><span class="TableContent ItemLink">Show State Overview</span></a>				</td>
+				<td width="10px">
+				</td>
+				<td>
+					<table border="0" cellpadding="0" width="100%" cellspacing="0" id="selectShapeEC4zhbaGAqFkFTYd">
+						<tr>
+							<td>
+<span class="TableContent">Jump to:</span>								<select class="TableContent" onChange="scrollWin('diagramEC4zhbaGAqFkFTYd', this.value);hideLinkPopup();showSpotLight('diagramEC4zhbaGAqFkFTYd', this.value)">
+<option value="">Please select an element</option>
+<option value="shape|2.0|2.0|414.0|327.0|#EC4zhbaGAqFkFTYd;XC4zhbaGAqFkFTYf|#EC4zhbaGAqFkFTYd;XC4zhbaGAqFkFTYf|XC4zhbaGAqFkFTYf" id="optionXC4zhbaGAqFkFTYf">Desktop Frame : Frame</option>
+<option value="shape|91.0|80.0|244.0|48.0|#EC4zhbaGAqFkFTYd;JrCvhbaGAqFkFUgJ|#EC4zhbaGAqFkFTYd;JrCvhbaGAqFkFUgJ|JrCvhbaGAqFkFUgJ" id="optionJrCvhbaGAqFkFUgJ">Selecteer de taak : Label</option>
+<option value="shape|223.0|192.0|100.0|30.0|#EC4zhbaGAqFkFTYd;ZrCvhbaGAqFkFUgO|#EC4zhbaGAqFkFTYd;ZrCvhbaGAqFkFUgO|ZrCvhbaGAqFkFUgO" id="optionZrCvhbaGAqFkFUgO">Overleg : Button</option>
+<option value="shape|223.0|239.0|100.0|30.0|#EC4zhbaGAqFkFTYd;FrCvhbaGAqFkFUgS|#EC4zhbaGAqFkFTYd;FrCvhbaGAqFkFUgS|FrCvhbaGAqFkFUgS" id="optionFrCvhbaGAqFkFUgS">Productie : Button</option>
+<option value="shape|223.0|145.0|100.0|30.0|#EC4zhbaGAqFkFTYd;lrCvhbaGAqFkFUgW|#EC4zhbaGAqFkFTYd;lrCvhbaGAqFkFUgW|lrCvhbaGAqFkFUgW" id="optionlrCvhbaGAqFkFUgW">Buitenwerk : Button</option>
+<option value="shape|91.0|192.0|100.0|30.0|#EC4zhbaGAqFkFTYd;1rCvhbaGAqFkFUga|#EC4zhbaGAqFkFTYd;1rCvhbaGAqFkFUga|1rCvhbaGAqFkFUga" id="option1rCvhbaGAqFkFUga">Vervoer : Button</option>
+<option value="shape|91.0|239.0|100.0|30.0|#EC4zhbaGAqFkFTYd;NrCvhbaGAqFkFUge|#EC4zhbaGAqFkFTYd;NrCvhbaGAqFkFUge|NrCvhbaGAqFkFUge" id="optionNrCvhbaGAqFkFUge">Binnenwerk : Button</option>
+<option value="shape|91.0|145.0|100.0|30.0|#EC4zhbaGAqFkFTYd;drCvhbaGAqFkFUgi|#EC4zhbaGAqFkFTYd;drCvhbaGAqFkFUgi|drCvhbaGAqFkFUgi" id="optiondrCvhbaGAqFkFUgi">Administratie : Button</option>
+</select>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<span data-value="EC4zhbaGAqFkFTYd" style="display: none;" id="defaultState">
+		</span>
+		<span data-value="Desktop Wireframe - TaskUI - Gebruiker klikt op Gegegevens aanpassen" style="display: none;" id="defaultPageTitleText">
+		</span>
+		<table border="0" cellpadding="0" width="100%" cellspacing="0" style="position: relative; top: 24;">
+			<tr>
+				<td>
+					<img id="diagramEC4zhbaGAqFkFTYd" src="../images/TaskUI_Gebruiker_klikt_op_Gegegevens_aanpassen.png" usemap="#diagramEC4zhbaGAqFkFTYd_map" class="Image" width="420" height="333"/>
+					<map name="diagramEC4zhbaGAqFkFTYd_map">
+<area imageId="diagramEC4zhbaGAqFkFTYd" coords="91, 145, 191, 175" coords2="91, 145, 191, 175" shape="rect" alt="Administratie:Button" id="areadiagramEC4zhbaGAqFkFTYd_map_drCvhbaGAqFkFUgi" href="#EC4zhbaGAqFkFTYd;drCvhbaGAqFkFUgi" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramEC4zhbaGAqFkFTYd" coords="91, 239, 191, 269" coords2="91, 239, 191, 269" shape="rect" alt="Binnenwerk:Button" id="areadiagramEC4zhbaGAqFkFTYd_map_NrCvhbaGAqFkFUge" href="#EC4zhbaGAqFkFTYd;NrCvhbaGAqFkFUge" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramEC4zhbaGAqFkFTYd" coords="91, 192, 191, 222" coords2="91, 192, 191, 222" shape="rect" alt="Vervoer:Button" id="areadiagramEC4zhbaGAqFkFTYd_map_1rCvhbaGAqFkFUga" href="#EC4zhbaGAqFkFTYd;1rCvhbaGAqFkFUga" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramEC4zhbaGAqFkFTYd" coords="223, 145, 323, 175" coords2="223, 145, 323, 175" shape="rect" alt="Buitenwerk:Button" id="areadiagramEC4zhbaGAqFkFTYd_map_lrCvhbaGAqFkFUgW" href="#EC4zhbaGAqFkFTYd;lrCvhbaGAqFkFUgW" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramEC4zhbaGAqFkFTYd" coords="223, 239, 323, 269" coords2="223, 239, 323, 269" shape="rect" alt="Productie:Button" id="areadiagramEC4zhbaGAqFkFTYd_map_FrCvhbaGAqFkFUgS" href="#EC4zhbaGAqFkFTYd;FrCvhbaGAqFkFUgS" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramEC4zhbaGAqFkFTYd" coords="223, 192, 323, 222" coords2="223, 192, 323, 222" shape="rect" alt="Overleg:Button" id="areadiagramEC4zhbaGAqFkFTYd_map_ZrCvhbaGAqFkFUgO" href="#EC4zhbaGAqFkFTYd;ZrCvhbaGAqFkFUgO" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramEC4zhbaGAqFkFTYd" coords="91, 80, 335, 128" coords2="91, 80, 335, 128" shape="rect" alt="Selecteer de taak:Label" id="areadiagramEC4zhbaGAqFkFTYd_map_JrCvhbaGAqFkFUgJ" href="#EC4zhbaGAqFkFTYd;JrCvhbaGAqFkFUgJ" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramEC4zhbaGAqFkFTYd" coords="2, 2, 416, 329" coords2="2, 2, 416, 329" shape="rect" alt="Desktop Frame:Frame" id="areadiagramEC4zhbaGAqFkFTYd_map_XC4zhbaGAqFkFTYf" href="#EC4zhbaGAqFkFTYd;XC4zhbaGAqFkFTYf" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+</map>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+				Elements			</td>
+		</tr>
+		<tr>
+			<td style="height: 5px">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0" id="elementsEC4zhbaGAqFkFTYd">
+		<tr>
+			<td colSpan="4" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="30%">
+<span class="TableHeaderText">Display Text</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td>
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/WFDesktopFrame.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/WFDesktopFrame.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Desktop Frame : Frame</span>				</span>
+<a name="EC4zhbaGAqFkFTYd;XC4zhbaGAqFkFTYf"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Selecteer de taak : Label</span>				</span>
+<a name="EC4zhbaGAqFkFTYd;JrCvhbaGAqFkFUgJ"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Button.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Button.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Overleg : Button</span>				</span>
+<a name="EC4zhbaGAqFkFTYd;ZrCvhbaGAqFkFUgO"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Button.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Button.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Productie : Button</span>				</span>
+<a name="EC4zhbaGAqFkFTYd;FrCvhbaGAqFkFUgS"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Button.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Button.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Buitenwerk : Button</span>				</span>
+<a name="EC4zhbaGAqFkFTYd;lrCvhbaGAqFkFUgW"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Button.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Button.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Vervoer : Button</span>				</span>
+<a name="EC4zhbaGAqFkFTYd;1rCvhbaGAqFkFUga"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Button.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Button.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Binnenwerk : Button</span>				</span>
+<a name="EC4zhbaGAqFkFTYd;NrCvhbaGAqFkFUge"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Button.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Button.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Administratie : Button</span>				</span>
+<a name="EC4zhbaGAqFkFTYd;drCvhbaGAqFkFUgi"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<div style="width:370px; height:255px; position: fixed; _position: absolute; overflow: scroll; background-color: #F0F0F0; top: 100px; left: 100px; padding: 10px; display: none;" id="wireframeStatesDialog">
+		<span data-value="Desktop Wireframe - TaskUI - Gebruiker klikt op Gegegevens aanpassen" style="display: none;" id="pageTitleTextEC4zhbaGAqFkFTYd">
+		</span>
+		<table border="0" cellpadding="0" width="100%" cellspacing="0" style=" left: 30; top: 30; width: 340; height: 225; position: absolute; z-index: 10; background: white; border: black 3px solid; padding: 15px 20px 10px 20px; text-align: center;">
+			<tr>
+				<td>
+<a href="javascript:okWireframeStatesDialog('selectShapeEC4zhbaGAqFkFTYd', 'diagramEC4zhbaGAqFkFTYd', 'none', 'elementsEC4zhbaGAqFkFTYd', 'PageTitleText', 'pageTitleTextEC4zhbaGAqFkFTYd')"><img src="../images/TaskUI_Gebruiker_klikt_op_Gegegevens_aanpassen_preview.png" class="Image" style=" width: 252; height: 200; border: none !important;"/>
+</a>				</td>
+			</tr>
+			<tr>
+				<td>
+<a href="javascript:okWireframeStatesDialog('selectShapeEC4zhbaGAqFkFTYd', 'diagramEC4zhbaGAqFkFTYd', 'none', 'elementsEC4zhbaGAqFkFTYd', 'PageTitleText', 'pageTitleTextEC4zhbaGAqFkFTYd')"><span style="color: black !important" class="TableContent ItemLink">Gebruiker klikt op Gegegevens aanpassen</span></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="height: 20px">
+	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		JavaBlok2.1	</div>
+</body>
+</html>

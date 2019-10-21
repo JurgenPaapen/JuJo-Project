@@ -1,0 +1,1293 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Desktop Wireframe - NAW gegevens</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initWireframeDiagram();">
+	<div style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;" id="spotlight_top">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;" id="spotlight_bottom">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;" id="spotlight_left">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;" id="spotlight_right">
+	</div>
+	<canvas width="100" style="position:absolute; z-index:2; visibility:hidden" id="spotlight_c" height="100">
+	</canvas>
+	<div style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" id="spotLightResourcesTop">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+<a href="#top"><img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>				</td>
+				<td>
+<a href="javascript:clearSpotLightFromOpenSpecButton();"><img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" id="spotLightResourcesRight">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+<a href="#top"><img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>				</td>
+			</tr>
+			<tr>
+				<td>
+<a href="javascript:clearSpotLightFromOpenSpecButton();"><img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute;z-index:4;visibility:hidden" id="linkPopupMenuLayer">
+		<table border="0" width="100%" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" id="linkPopupMenuTable">
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="referenceIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="subdiagramIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="transitorIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="documentationIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		JavaBlok2.1	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div style="position:absolute; z-index:21; visibility:hidden" id="referencedBys">
+		<table border="0" width="100%" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" id="referencedBysTable">
+		</table>
+	</div>
+	<div style="position:absolute; z-index:21; visibility:hidden" id="vplink">
+		<table border="1" cellpadding="0" cellspacing="0" bordercolor="#A9BFD3">
+			<tr>
+				<td>
+					<table border="0" cellpadding="0" width="100%" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+								<select onchange="vpLinkToggleName()" id="vplink-linkType">
+	<option value="Project Link">Project Link</option>
+	<option value="Page URL">Page URL</option>
+</select>
+							</td>
+							<td style="font-size: 12px;" align="right">
+								<input onclick="javascript: vpLinkToggleName()" id="vplink-checkbox" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+<a href="UseCaseDiagram_N3VX7zaFS_gS8grH.html" class="PageParentTitle">System : System</a><span class="PageParentTitle">&nbsp;.&nbsp;</span><a href="UseCaseDiagram_N3VX7zaFS_gS8grH.html" class="PageParentTitle">AdministatieLevel : Package</a><span class="PageParentTitle">&nbsp;.&nbsp;</span><a href="UseCaseDiagram_N3VX7zaFS_gS8grH.html" class="PageParentTitle">Persoonsgegevens aanpassen : Use Case</a>	</p>
+	<p class="PageTitle">
+		<span id="PageTitleText">
+			Desktop Wireframe - NAW gegevens		</span>
+<a onclick="javascript: showVpLink('JavaBlok2.1.vpp://diagram/ne2zhbaGAqFkFTaW', 'NAW gegevens\nJavaBlok2.1.vpp://diagram/ne2zhbaGAqFkFTaW', 'NAW gegevens', this); return false;" style="padding-left: 16px; font-size: 12px" href="#"><img src="../images/icons/link.png" border="0"> link</a>	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table border="0" cellpadding="0" width="auto" cellspacing="0" style="position: absolute; top: 0; left: 0; z-index: 20;">
+			<tr>
+				<td>
+<a href="javascript:showWireframeStatesDialog()"><span class="TableContent ItemLink">Show State Overview</span></a>				</td>
+				<td width="10px">
+				</td>
+				<td>
+					<table border="0" cellpadding="0" width="100%" cellspacing="0" id="selectShapeXe2zhbaGAqFkFTaY">
+						<tr>
+							<td>
+<span class="TableContent">Jump to:</span>								<select class="TableContent" onChange="scrollWin('diagramXe2zhbaGAqFkFTaY', this.value);hideLinkPopup();showSpotLight('diagramXe2zhbaGAqFkFTaY', this.value)">
+<option value="">Please select an element</option>
+<option value="shape|2.0|2.0|605.0|564.0|#Xe2zhbaGAqFkFTaY;o.2zhbaGAqFkFTaZ|#Xe2zhbaGAqFkFTaY;o.2zhbaGAqFkFTaZ|o.2zhbaGAqFkFTaZ" id="optiono.2zhbaGAqFkFTaZ">Desktop Frame : Frame</option>
+<option value="shape|326.0|488.0|100.0|30.0|#Xe2zhbaGAqFkFTaY;wCuzhbaGAqFkFTa4|#Xe2zhbaGAqFkFTaY;wCuzhbaGAqFkFTa4|wCuzhbaGAqFkFTa4" id="optionwCuzhbaGAqFkFTa4">Verzenden : Button</option>
+<option value="shape|303.0|106.0|146.0|30.0|#Xe2zhbaGAqFkFTaY;3g.zhbaGAqFkFTa.|#Xe2zhbaGAqFkFTaY;3g.zhbaGAqFkFTa.|3g.zhbaGAqFkFTa." id="option3g.zhbaGAqFkFTa.">Text Field : Text Field</option>
+<option value="shape|303.0|151.0|146.0|30.0|#Xe2zhbaGAqFkFTaY;6X.zhbaGAqFkFTbG|#Xe2zhbaGAqFkFTaY;6X.zhbaGAqFkFTbG|6X.zhbaGAqFkFTbG" id="option6X.zhbaGAqFkFTbG">Text Field : Text Field</option>
+<option value="shape|303.0|196.0|146.0|30.0|#Xe2zhbaGAqFkFTaY;UIBzhbaGAqFkFTbQ|#Xe2zhbaGAqFkFTaY;UIBzhbaGAqFkFTbQ|UIBzhbaGAqFkFTbQ" id="optionUIBzhbaGAqFkFTbQ">Text Field : Text Field</option>
+<option value="shape|303.0|241.0|146.0|30.0|#Xe2zhbaGAqFkFTaY;jmBzhbaGAqFkFTba|#Xe2zhbaGAqFkFTaY;jmBzhbaGAqFkFTba|jmBzhbaGAqFkFTba" id="optionjmBzhbaGAqFkFTba">Text Field : Text Field</option>
+<option value="shape|303.0|286.0|146.0|30.0|#Xe2zhbaGAqFkFTaY;VhBzhbaGAqFkFTbk|#Xe2zhbaGAqFkFTaY;VhBzhbaGAqFkFTbk|VhBzhbaGAqFkFTbk" id="optionVhBzhbaGAqFkFTbk">Text Field : Text Field</option>
+<option value="shape|303.0|331.0|146.0|30.0|#Xe2zhbaGAqFkFTaY;K5BzhbaGAqFkFTbu|#Xe2zhbaGAqFkFTaY;K5BzhbaGAqFkFTbu|K5BzhbaGAqFkFTbu" id="optionK5BzhbaGAqFkFTbu">Text Field : Text Field</option>
+<option value="shape|303.0|376.0|146.0|30.0|#Xe2zhbaGAqFkFTaY;k1BzhbaGAqFkFTb4|#Xe2zhbaGAqFkFTaY;k1BzhbaGAqFkFTb4|k1BzhbaGAqFkFTb4" id="optionk1BzhbaGAqFkFTb4">Text Field : Text Field</option>
+<option value="shape|303.0|421.0|146.0|30.0|#Xe2zhbaGAqFkFTaY;vtBzhbaGAqFkFTcC|#Xe2zhbaGAqFkFTaY;vtBzhbaGAqFkFTcC|vtBzhbaGAqFkFTcC" id="optionvtBzhbaGAqFkFTcC">Text Field : Text Field</option>
+<option value="shape|159.0|106.0|72.0|24.0|#Xe2zhbaGAqFkFTaY;kr4LhbaGAqFkFTee|#Xe2zhbaGAqFkFTaY;kr4LhbaGAqFkFTee|kr4LhbaGAqFkFTee" id="optionkr4LhbaGAqFkFTee">Voornaam: : Label</option>
+<option value="shape|159.0|154.0|81.0|24.0|#Xe2zhbaGAqFkFTaY;g.qLhbaGAqFkFTfn|#Xe2zhbaGAqFkFTaY;g.qLhbaGAqFkFTfn|g.qLhbaGAqFkFTfn" id="optiong.qLhbaGAqFkFTfn">Achternaam : Label</option>
+<option value="shape|155.0|199.0|81.0|24.0|#Xe2zhbaGAqFkFTaY;MkGLhbaGAqFkFTf4|#Xe2zhbaGAqFkFTaY;MkGLhbaGAqFkFTf4|MkGLhbaGAqFkFTf4" id="optionMkGLhbaGAqFkFTf4">Adres : Label</option>
+<option value="shape|155.0|244.0|81.0|24.0|#Xe2zhbaGAqFkFTaY;kbWLhbaGAqFkFTgR|#Xe2zhbaGAqFkFTaY;kbWLhbaGAqFkFTgR|kbWLhbaGAqFkFTgR" id="optionkbWLhbaGAqFkFTgR">Plaats : Label</option>
+<option value="shape|155.0|289.0|110.0|24.0|#Xe2zhbaGAqFkFTaY;GceLhbaGAqFkFTgo|#Xe2zhbaGAqFkFTaY;GceLhbaGAqFkFTgo|GceLhbaGAqFkFTgo" id="optionGceLhbaGAqFkFTgo">Telefoonnummer : Label</option>
+<option value="shape|155.0|334.0|110.0|24.0|#Xe2zhbaGAqFkFTaY;jWxLhbaGAqFkFTg9|#Xe2zhbaGAqFkFTaY;jWxLhbaGAqFkFTg9|jWxLhbaGAqFkFTg9" id="optionjWxLhbaGAqFkFTg9">KVK nummer : Label</option>
+<option value="shape|155.0|379.0|110.0|24.0|#Xe2zhbaGAqFkFTaY;8VpLhbaGAqFkFThO|#Xe2zhbaGAqFkFTaY;8VpLhbaGAqFkFThO|8VpLhbaGAqFkFThO" id="option8VpLhbaGAqFkFThO">BTW nummer : Label</option>
+<option value="shape|155.0|424.0|110.0|24.0|#Xe2zhbaGAqFkFTaY;JG1LhbaGAqFkFTiG|#Xe2zhbaGAqFkFTaY;JG1LhbaGAqFkFTiG|JG1LhbaGAqFkFTiG" id="optionJG1LhbaGAqFkFTiG">Bedrijfsnaam : Label</option>
+<option value="shape|77.0|52.0|406.0|39.0|#Xe2zhbaGAqFkFTaY;fPLLhbaGAqFkFTin|#Xe2zhbaGAqFkFTaY;fPLLhbaGAqFkFTin|fPLLhbaGAqFkFTin" id="optionfPLLhbaGAqFkFTin">Voer alle velden in voor een volledige registratie : Label</option>
+</select>							</td>
+						</tr>
+					</table>
+					<table border="0" cellpadding="0" width="100%" cellspacing="0" style="display: none;" id="selectShapejsSfhbaGAqFkFUsb">
+						<tr>
+							<td>
+<span class="TableContent">Jump to:</span>								<select class="TableContent" onChange="scrollWin('diagramjsSfhbaGAqFkFUsb', this.value);hideLinkPopup();showSpotLight('diagramjsSfhbaGAqFkFUsb', this.value)">
+<option value="">Please select an element</option>
+<option value="shape|2.0|2.0|605.0|564.0|#jsSfhbaGAqFkFUsb;o.2zhbaGAqFkFTaZ|#jsSfhbaGAqFkFUsb;o.2zhbaGAqFkFTaZ|o.2zhbaGAqFkFTaZ" id="optiono.2zhbaGAqFkFTaZ">Desktop Frame : Frame</option>
+<option value="shape|326.0|488.0|100.0|30.0|#jsSfhbaGAqFkFUsb;wCuzhbaGAqFkFTa4|#jsSfhbaGAqFkFUsb;wCuzhbaGAqFkFTa4|wCuzhbaGAqFkFTa4" id="optionwCuzhbaGAqFkFTa4">Verzenden : Button</option>
+<option value="shape|303.0|106.0|146.0|30.0|#jsSfhbaGAqFkFUsb;3g.zhbaGAqFkFTa.|#jsSfhbaGAqFkFUsb;3g.zhbaGAqFkFTa.|3g.zhbaGAqFkFTa." id="option3g.zhbaGAqFkFTa.">Joost : Text Field</option>
+<option value="shape|303.0|151.0|146.0|30.0|#jsSfhbaGAqFkFUsb;6X.zhbaGAqFkFTbG|#jsSfhbaGAqFkFUsb;6X.zhbaGAqFkFTbG|6X.zhbaGAqFkFTbG" id="option6X.zhbaGAqFkFTbG">Oomen : Text Field</option>
+<option value="shape|303.0|196.0|146.0|30.0|#jsSfhbaGAqFkFUsb;UIBzhbaGAqFkFTbQ|#jsSfhbaGAqFkFUsb;UIBzhbaGAqFkFTbQ|UIBzhbaGAqFkFTbQ" id="optionUIBzhbaGAqFkFTbQ">Kerkstraat 165 : Text Field</option>
+<option value="shape|303.0|241.0|146.0|30.0|#jsSfhbaGAqFkFUsb;jmBzhbaGAqFkFTba|#jsSfhbaGAqFkFUsb;jmBzhbaGAqFkFTba|jmBzhbaGAqFkFTba" id="optionjmBzhbaGAqFkFTba">Rijen : Text Field</option>
+<option value="shape|303.0|286.0|146.0|30.0|#jsSfhbaGAqFkFUsb;VhBzhbaGAqFkFTbk|#jsSfhbaGAqFkFUsb;VhBzhbaGAqFkFTbk|VhBzhbaGAqFkFTbk" id="optionVhBzhbaGAqFkFTbk">0161232499 : Text Field</option>
+<option value="shape|303.0|331.0|146.0|30.0|#jsSfhbaGAqFkFUsb;K5BzhbaGAqFkFTbu|#jsSfhbaGAqFkFUsb;K5BzhbaGAqFkFTbu|K5BzhbaGAqFkFTbu" id="optionK5BzhbaGAqFkFTbu">123456 : Text Field</option>
+<option value="shape|303.0|376.0|146.0|30.0|#jsSfhbaGAqFkFUsb;k1BzhbaGAqFkFTb4|#jsSfhbaGAqFkFUsb;k1BzhbaGAqFkFTb4|k1BzhbaGAqFkFTb4" id="optionk1BzhbaGAqFkFTb4">1234567 : Text Field</option>
+<option value="shape|303.0|421.0|146.0|30.0|#jsSfhbaGAqFkFUsb;vtBzhbaGAqFkFTcC|#jsSfhbaGAqFkFUsb;vtBzhbaGAqFkFTcC|vtBzhbaGAqFkFTcC" id="optionvtBzhbaGAqFkFTcC">ClockYourHours : Text Field</option>
+<option value="shape|159.0|106.0|72.0|24.0|#jsSfhbaGAqFkFUsb;kr4LhbaGAqFkFTee|#jsSfhbaGAqFkFUsb;kr4LhbaGAqFkFTee|kr4LhbaGAqFkFTee" id="optionkr4LhbaGAqFkFTee">Voornaam: : Label</option>
+<option value="shape|159.0|154.0|81.0|24.0|#jsSfhbaGAqFkFUsb;g.qLhbaGAqFkFTfn|#jsSfhbaGAqFkFUsb;g.qLhbaGAqFkFTfn|g.qLhbaGAqFkFTfn" id="optiong.qLhbaGAqFkFTfn">Achternaam : Label</option>
+<option value="shape|155.0|199.0|81.0|24.0|#jsSfhbaGAqFkFUsb;MkGLhbaGAqFkFTf4|#jsSfhbaGAqFkFUsb;MkGLhbaGAqFkFTf4|MkGLhbaGAqFkFTf4" id="optionMkGLhbaGAqFkFTf4">Adres : Label</option>
+<option value="shape|155.0|244.0|81.0|24.0|#jsSfhbaGAqFkFUsb;kbWLhbaGAqFkFTgR|#jsSfhbaGAqFkFUsb;kbWLhbaGAqFkFTgR|kbWLhbaGAqFkFTgR" id="optionkbWLhbaGAqFkFTgR">Plaats : Label</option>
+<option value="shape|155.0|289.0|110.0|24.0|#jsSfhbaGAqFkFUsb;GceLhbaGAqFkFTgo|#jsSfhbaGAqFkFUsb;GceLhbaGAqFkFTgo|GceLhbaGAqFkFTgo" id="optionGceLhbaGAqFkFTgo">Telefoonnummer : Label</option>
+<option value="shape|155.0|334.0|110.0|24.0|#jsSfhbaGAqFkFUsb;jWxLhbaGAqFkFTg9|#jsSfhbaGAqFkFUsb;jWxLhbaGAqFkFTg9|jWxLhbaGAqFkFTg9" id="optionjWxLhbaGAqFkFTg9">KVK nummer : Label</option>
+<option value="shape|155.0|379.0|110.0|24.0|#jsSfhbaGAqFkFUsb;8VpLhbaGAqFkFThO|#jsSfhbaGAqFkFUsb;8VpLhbaGAqFkFThO|8VpLhbaGAqFkFThO" id="option8VpLhbaGAqFkFThO">BTW nummer : Label</option>
+<option value="shape|155.0|424.0|110.0|24.0|#jsSfhbaGAqFkFUsb;JG1LhbaGAqFkFTiG|#jsSfhbaGAqFkFUsb;JG1LhbaGAqFkFTiG|JG1LhbaGAqFkFTiG" id="optionJG1LhbaGAqFkFTiG">Bedrijfsnaam : Label</option>
+<option value="shape|77.0|52.0|406.0|39.0|#jsSfhbaGAqFkFUsb;fPLLhbaGAqFkFTin|#jsSfhbaGAqFkFUsb;fPLLhbaGAqFkFTin|fPLLhbaGAqFkFTin" id="optionfPLLhbaGAqFkFTin">Voer alle velden in voor een volledige registratie : Label</option>
+</select>							</td>
+						</tr>
+					</table>
+					<table border="0" cellpadding="0" width="100%" cellspacing="0" style="display: none;" id="selectShapebAwaRbaGAqFkFXqy">
+						<tr>
+							<td>
+<span class="TableContent">Jump to:</span>								<select class="TableContent" onChange="scrollWin('diagrambAwaRbaGAqFkFXqy', this.value);hideLinkPopup();showSpotLight('diagrambAwaRbaGAqFkFXqy', this.value)">
+<option value="">Please select an element</option>
+<option value="shape|2.0|2.0|605.0|564.0|#bAwaRbaGAqFkFXqy;o.2zhbaGAqFkFTaZ|#bAwaRbaGAqFkFXqy;o.2zhbaGAqFkFTaZ|o.2zhbaGAqFkFTaZ" id="optiono.2zhbaGAqFkFTaZ">Desktop Frame : Frame</option>
+<option value="shape|326.0|488.0|100.0|30.0|#bAwaRbaGAqFkFXqy;wCuzhbaGAqFkFTa4|#bAwaRbaGAqFkFXqy;wCuzhbaGAqFkFTa4|wCuzhbaGAqFkFTa4" id="optionwCuzhbaGAqFkFTa4">Verzenden : Button</option>
+<option value="shape|303.0|106.0|146.0|30.0|#bAwaRbaGAqFkFXqy;3g.zhbaGAqFkFTa.|#bAwaRbaGAqFkFXqy;3g.zhbaGAqFkFTa.|3g.zhbaGAqFkFTa." id="option3g.zhbaGAqFkFTa.">Joost : Text Field</option>
+<option value="shape|303.0|151.0|146.0|30.0|#bAwaRbaGAqFkFXqy;6X.zhbaGAqFkFTbG|#bAwaRbaGAqFkFXqy;6X.zhbaGAqFkFTbG|6X.zhbaGAqFkFTbG" id="option6X.zhbaGAqFkFTbG">Oomen : Text Field</option>
+<option value="shape|303.0|196.0|146.0|30.0|#bAwaRbaGAqFkFXqy;UIBzhbaGAqFkFTbQ|#bAwaRbaGAqFkFXqy;UIBzhbaGAqFkFTbQ|UIBzhbaGAqFkFTbQ" id="optionUIBzhbaGAqFkFTbQ">Kerkstraat 165 : Text Field</option>
+<option value="shape|303.0|241.0|146.0|30.0|#bAwaRbaGAqFkFXqy;jmBzhbaGAqFkFTba|#bAwaRbaGAqFkFXqy;jmBzhbaGAqFkFTba|jmBzhbaGAqFkFTba" id="optionjmBzhbaGAqFkFTba">Rijen : Text Field</option>
+<option value="shape|303.0|286.0|146.0|30.0|#bAwaRbaGAqFkFXqy;VhBzhbaGAqFkFTbk|#bAwaRbaGAqFkFXqy;VhBzhbaGAqFkFTbk|VhBzhbaGAqFkFTbk" id="optionVhBzhbaGAqFkFTbk">0617162543 : Text Field</option>
+<option value="shape|303.0|331.0|146.0|30.0|#bAwaRbaGAqFkFXqy;K5BzhbaGAqFkFTbu|#bAwaRbaGAqFkFXqy;K5BzhbaGAqFkFTbu|K5BzhbaGAqFkFTbu" id="optionK5BzhbaGAqFkFTbu">123456 : Text Field</option>
+<option value="shape|303.0|376.0|146.0|30.0|#bAwaRbaGAqFkFXqy;k1BzhbaGAqFkFTb4|#bAwaRbaGAqFkFXqy;k1BzhbaGAqFkFTb4|k1BzhbaGAqFkFTb4" id="optionk1BzhbaGAqFkFTb4">1234567 : Text Field</option>
+<option value="shape|303.0|421.0|146.0|30.0|#bAwaRbaGAqFkFXqy;vtBzhbaGAqFkFTcC|#bAwaRbaGAqFkFXqy;vtBzhbaGAqFkFTcC|vtBzhbaGAqFkFTcC" id="optionvtBzhbaGAqFkFTcC">ClockYourHours : Text Field</option>
+<option value="shape|159.0|106.0|72.0|24.0|#bAwaRbaGAqFkFXqy;kr4LhbaGAqFkFTee|#bAwaRbaGAqFkFXqy;kr4LhbaGAqFkFTee|kr4LhbaGAqFkFTee" id="optionkr4LhbaGAqFkFTee">Voornaam: : Label</option>
+<option value="shape|159.0|154.0|81.0|24.0|#bAwaRbaGAqFkFXqy;g.qLhbaGAqFkFTfn|#bAwaRbaGAqFkFXqy;g.qLhbaGAqFkFTfn|g.qLhbaGAqFkFTfn" id="optiong.qLhbaGAqFkFTfn">Achternaam : Label</option>
+<option value="shape|155.0|199.0|81.0|24.0|#bAwaRbaGAqFkFXqy;MkGLhbaGAqFkFTf4|#bAwaRbaGAqFkFXqy;MkGLhbaGAqFkFTf4|MkGLhbaGAqFkFTf4" id="optionMkGLhbaGAqFkFTf4">Adres : Label</option>
+<option value="shape|155.0|244.0|81.0|24.0|#bAwaRbaGAqFkFXqy;kbWLhbaGAqFkFTgR|#bAwaRbaGAqFkFXqy;kbWLhbaGAqFkFTgR|kbWLhbaGAqFkFTgR" id="optionkbWLhbaGAqFkFTgR">Plaats : Label</option>
+<option value="shape|155.0|289.0|110.0|24.0|#bAwaRbaGAqFkFXqy;GceLhbaGAqFkFTgo|#bAwaRbaGAqFkFXqy;GceLhbaGAqFkFTgo|GceLhbaGAqFkFTgo" id="optionGceLhbaGAqFkFTgo">Telefoonnummer : Label</option>
+<option value="shape|155.0|334.0|110.0|24.0|#bAwaRbaGAqFkFXqy;jWxLhbaGAqFkFTg9|#bAwaRbaGAqFkFXqy;jWxLhbaGAqFkFTg9|jWxLhbaGAqFkFTg9" id="optionjWxLhbaGAqFkFTg9">KVK nummer : Label</option>
+<option value="shape|155.0|379.0|110.0|24.0|#bAwaRbaGAqFkFXqy;8VpLhbaGAqFkFThO|#bAwaRbaGAqFkFXqy;8VpLhbaGAqFkFThO|8VpLhbaGAqFkFThO" id="option8VpLhbaGAqFkFThO">BTW nummer : Label</option>
+<option value="shape|155.0|424.0|110.0|24.0|#bAwaRbaGAqFkFXqy;JG1LhbaGAqFkFTiG|#bAwaRbaGAqFkFXqy;JG1LhbaGAqFkFTiG|JG1LhbaGAqFkFTiG" id="optionJG1LhbaGAqFkFTiG">Bedrijfsnaam : Label</option>
+<option value="shape|77.0|52.0|406.0|39.0|#bAwaRbaGAqFkFXqy;fPLLhbaGAqFkFTin|#bAwaRbaGAqFkFXqy;fPLLhbaGAqFkFTin|fPLLhbaGAqFkFTin" id="optionfPLLhbaGAqFkFTin">Voer alle velden in voor een volledige registratie : Label</option>
+</select>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<span data-value="Xe2zhbaGAqFkFTaY" style="display: none;" id="defaultState">
+		</span>
+		<span data-value="Desktop Wireframe - NAW gegevens - Gebruiker voert voornaam, achternaam, adres, bedrijfsnaam, telefoonnummer, VATnummer, KVKnummer in" style="display: none;" id="defaultPageTitleText">
+		</span>
+		<table border="0" cellpadding="0" width="100%" cellspacing="0" style="position: relative; top: 24;">
+			<tr>
+				<td>
+					<img id="diagramXe2zhbaGAqFkFTaY" src="../images/NAW_gegevens_Gebruiker_voert_voornaam_achternaam_adres_bedrijfsnaam_telefoonnummer_VATnummer_KVKnummer_in.png" usemap="#diagramXe2zhbaGAqFkFTaY_map" class="Image" width="611" height="570"/>
+					<map name="diagramXe2zhbaGAqFkFTaY_map">
+<area imageId="diagramXe2zhbaGAqFkFTaY" coords="77, 52, 483, 91" coords2="77, 52, 483, 91" shape="rect" alt="Voer alle velden in voor een volledige registratie:Label" id="areadiagramXe2zhbaGAqFkFTaY_map_fPLLhbaGAqFkFTin" href="#Xe2zhbaGAqFkFTaY;fPLLhbaGAqFkFTin" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramXe2zhbaGAqFkFTaY" coords="155, 424, 265, 448" coords2="155, 424, 265, 448" shape="rect" alt="Bedrijfsnaam:Label" id="areadiagramXe2zhbaGAqFkFTaY_map_JG1LhbaGAqFkFTiG" href="#Xe2zhbaGAqFkFTaY;JG1LhbaGAqFkFTiG" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramXe2zhbaGAqFkFTaY" coords="155, 379, 265, 403" coords2="155, 379, 265, 403" shape="rect" alt="BTW nummer:Label" id="areadiagramXe2zhbaGAqFkFTaY_map_8VpLhbaGAqFkFThO" href="#Xe2zhbaGAqFkFTaY;8VpLhbaGAqFkFThO" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramXe2zhbaGAqFkFTaY" coords="155, 334, 265, 358" coords2="155, 334, 265, 358" shape="rect" alt="KVK nummer:Label" id="areadiagramXe2zhbaGAqFkFTaY_map_jWxLhbaGAqFkFTg9" href="#Xe2zhbaGAqFkFTaY;jWxLhbaGAqFkFTg9" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramXe2zhbaGAqFkFTaY" coords="155, 289, 265, 313" coords2="155, 289, 265, 313" shape="rect" alt="Telefoonnummer:Label" id="areadiagramXe2zhbaGAqFkFTaY_map_GceLhbaGAqFkFTgo" href="#Xe2zhbaGAqFkFTaY;GceLhbaGAqFkFTgo" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramXe2zhbaGAqFkFTaY" coords="155, 244, 236, 268" coords2="155, 244, 236, 268" shape="rect" alt="Plaats:Label" id="areadiagramXe2zhbaGAqFkFTaY_map_kbWLhbaGAqFkFTgR" href="#Xe2zhbaGAqFkFTaY;kbWLhbaGAqFkFTgR" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramXe2zhbaGAqFkFTaY" coords="155, 199, 236, 223" coords2="155, 199, 236, 223" shape="rect" alt="Adres:Label" id="areadiagramXe2zhbaGAqFkFTaY_map_MkGLhbaGAqFkFTf4" href="#Xe2zhbaGAqFkFTaY;MkGLhbaGAqFkFTf4" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramXe2zhbaGAqFkFTaY" coords="159, 154, 240, 178" coords2="159, 154, 240, 178" shape="rect" alt="Achternaam:Label" id="areadiagramXe2zhbaGAqFkFTaY_map_g.qLhbaGAqFkFTfn" href="#Xe2zhbaGAqFkFTaY;g.qLhbaGAqFkFTfn" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramXe2zhbaGAqFkFTaY" coords="159, 106, 231, 130" coords2="159, 106, 231, 130" shape="rect" alt="Voornaam::Label" id="areadiagramXe2zhbaGAqFkFTaY_map_kr4LhbaGAqFkFTee" href="#Xe2zhbaGAqFkFTaY;kr4LhbaGAqFkFTee" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramXe2zhbaGAqFkFTaY" coords="303, 421, 449, 451" coords2="303, 421, 449, 451" shape="rect" alt="Text Field:Text Field" id="areadiagramXe2zhbaGAqFkFTaY_map_vtBzhbaGAqFkFTcC" href="#Xe2zhbaGAqFkFTaY;vtBzhbaGAqFkFTcC" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramXe2zhbaGAqFkFTaY" coords="303, 376, 449, 406" coords2="303, 376, 449, 406" shape="rect" alt="Text Field:Text Field" id="areadiagramXe2zhbaGAqFkFTaY_map_k1BzhbaGAqFkFTb4" href="#Xe2zhbaGAqFkFTaY;k1BzhbaGAqFkFTb4" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramXe2zhbaGAqFkFTaY" coords="303, 331, 449, 361" coords2="303, 331, 449, 361" shape="rect" alt="Text Field:Text Field" id="areadiagramXe2zhbaGAqFkFTaY_map_K5BzhbaGAqFkFTbu" href="#Xe2zhbaGAqFkFTaY;K5BzhbaGAqFkFTbu" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramXe2zhbaGAqFkFTaY" coords="303, 286, 449, 316" coords2="303, 286, 449, 316" shape="rect" alt="Text Field:Text Field" id="areadiagramXe2zhbaGAqFkFTaY_map_VhBzhbaGAqFkFTbk" href="#Xe2zhbaGAqFkFTaY;VhBzhbaGAqFkFTbk" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramXe2zhbaGAqFkFTaY" coords="303, 241, 449, 271" coords2="303, 241, 449, 271" shape="rect" alt="Text Field:Text Field" id="areadiagramXe2zhbaGAqFkFTaY_map_jmBzhbaGAqFkFTba" href="#Xe2zhbaGAqFkFTaY;jmBzhbaGAqFkFTba" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramXe2zhbaGAqFkFTaY" coords="303, 196, 449, 226" coords2="303, 196, 449, 226" shape="rect" alt="Text Field:Text Field" id="areadiagramXe2zhbaGAqFkFTaY_map_UIBzhbaGAqFkFTbQ" href="#Xe2zhbaGAqFkFTaY;UIBzhbaGAqFkFTbQ" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramXe2zhbaGAqFkFTaY" coords="303, 151, 449, 181" coords2="303, 151, 449, 181" shape="rect" alt="Text Field:Text Field" id="areadiagramXe2zhbaGAqFkFTaY_map_6X.zhbaGAqFkFTbG" href="#Xe2zhbaGAqFkFTaY;6X.zhbaGAqFkFTbG" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramXe2zhbaGAqFkFTaY" coords="303, 106, 449, 136" coords2="303, 106, 449, 136" shape="rect" alt="Text Field:Text Field" id="areadiagramXe2zhbaGAqFkFTaY_map_3g.zhbaGAqFkFTa." href="#Xe2zhbaGAqFkFTaY;3g.zhbaGAqFkFTa." onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramXe2zhbaGAqFkFTaY" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;font-weight:normal;margin-right:0;margin-left:0;font-size:12px;font-family:Dialog;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-bottom:.0001pt;margin-right:0pt;margin-left:0pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Verzenden van ingevoerde gegevens naar de database
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="326, 488, 426, 518" coords2="326, 488, 426, 518" shape="rect" alt="Verzenden:Button" id="areadiagramXe2zhbaGAqFkFTaY_map_wCuzhbaGAqFkFTa4" href="#Xe2zhbaGAqFkFTaY;wCuzhbaGAqFkFTa4" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagramXe2zhbaGAqFkFTaY" coords="2, 2, 607, 566" coords2="2, 2, 607, 566" shape="rect" alt="Desktop Frame:Frame" id="areadiagramXe2zhbaGAqFkFTaY_map_o.2zhbaGAqFkFTaZ" href="#Xe2zhbaGAqFkFTaY;o.2zhbaGAqFkFTaZ" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+</map>
+					<img id="diagramjsSfhbaGAqFkFUsb" src="../images/NAW_gegevens_Gebruiker_voert_voornaam_achternaam_adres_bedrijfsnaam_telefoonnummer_VATnummer_KVKnummer_in2.png" usemap="#diagramjsSfhbaGAqFkFUsb_map" class="Image" width="611" height="570" style="display: none;"/>
+					<map name="diagramjsSfhbaGAqFkFUsb_map">
+<area imageId="diagramjsSfhbaGAqFkFUsb" coords="77, 52, 483, 91" coords2="77, 52, 483, 91" shape="rect" alt="Voer alle velden in voor een volledige registratie:Label" id="areadiagramjsSfhbaGAqFkFUsb_map_fPLLhbaGAqFkFTin" href="#jsSfhbaGAqFkFUsb;fPLLhbaGAqFkFTin" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramjsSfhbaGAqFkFUsb" coords="155, 424, 265, 448" coords2="155, 424, 265, 448" shape="rect" alt="Bedrijfsnaam:Label" id="areadiagramjsSfhbaGAqFkFUsb_map_JG1LhbaGAqFkFTiG" href="#jsSfhbaGAqFkFUsb;JG1LhbaGAqFkFTiG" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramjsSfhbaGAqFkFUsb" coords="155, 379, 265, 403" coords2="155, 379, 265, 403" shape="rect" alt="BTW nummer:Label" id="areadiagramjsSfhbaGAqFkFUsb_map_8VpLhbaGAqFkFThO" href="#jsSfhbaGAqFkFUsb;8VpLhbaGAqFkFThO" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramjsSfhbaGAqFkFUsb" coords="155, 334, 265, 358" coords2="155, 334, 265, 358" shape="rect" alt="KVK nummer:Label" id="areadiagramjsSfhbaGAqFkFUsb_map_jWxLhbaGAqFkFTg9" href="#jsSfhbaGAqFkFUsb;jWxLhbaGAqFkFTg9" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramjsSfhbaGAqFkFUsb" coords="155, 289, 265, 313" coords2="155, 289, 265, 313" shape="rect" alt="Telefoonnummer:Label" id="areadiagramjsSfhbaGAqFkFUsb_map_GceLhbaGAqFkFTgo" href="#jsSfhbaGAqFkFUsb;GceLhbaGAqFkFTgo" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramjsSfhbaGAqFkFUsb" coords="155, 244, 236, 268" coords2="155, 244, 236, 268" shape="rect" alt="Plaats:Label" id="areadiagramjsSfhbaGAqFkFUsb_map_kbWLhbaGAqFkFTgR" href="#jsSfhbaGAqFkFUsb;kbWLhbaGAqFkFTgR" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramjsSfhbaGAqFkFUsb" coords="155, 199, 236, 223" coords2="155, 199, 236, 223" shape="rect" alt="Adres:Label" id="areadiagramjsSfhbaGAqFkFUsb_map_MkGLhbaGAqFkFTf4" href="#jsSfhbaGAqFkFUsb;MkGLhbaGAqFkFTf4" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramjsSfhbaGAqFkFUsb" coords="159, 154, 240, 178" coords2="159, 154, 240, 178" shape="rect" alt="Achternaam:Label" id="areadiagramjsSfhbaGAqFkFUsb_map_g.qLhbaGAqFkFTfn" href="#jsSfhbaGAqFkFUsb;g.qLhbaGAqFkFTfn" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramjsSfhbaGAqFkFUsb" coords="159, 106, 231, 130" coords2="159, 106, 231, 130" shape="rect" alt="Voornaam::Label" id="areadiagramjsSfhbaGAqFkFUsb_map_kr4LhbaGAqFkFTee" href="#jsSfhbaGAqFkFUsb;kr4LhbaGAqFkFTee" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramjsSfhbaGAqFkFUsb" coords="303, 421, 449, 451" coords2="303, 421, 449, 451" shape="rect" alt="ClockYourHours:Text Field" id="areadiagramjsSfhbaGAqFkFUsb_map_vtBzhbaGAqFkFTcC" href="#jsSfhbaGAqFkFUsb;vtBzhbaGAqFkFTcC" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramjsSfhbaGAqFkFUsb" coords="303, 376, 449, 406" coords2="303, 376, 449, 406" shape="rect" alt="1234567:Text Field" id="areadiagramjsSfhbaGAqFkFUsb_map_k1BzhbaGAqFkFTb4" href="#jsSfhbaGAqFkFUsb;k1BzhbaGAqFkFTb4" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramjsSfhbaGAqFkFUsb" coords="303, 331, 449, 361" coords2="303, 331, 449, 361" shape="rect" alt="123456:Text Field" id="areadiagramjsSfhbaGAqFkFUsb_map_K5BzhbaGAqFkFTbu" href="#jsSfhbaGAqFkFUsb;K5BzhbaGAqFkFTbu" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramjsSfhbaGAqFkFUsb" coords="303, 286, 449, 316" coords2="303, 286, 449, 316" shape="rect" alt="0161232499:Text Field" id="areadiagramjsSfhbaGAqFkFUsb_map_VhBzhbaGAqFkFTbk" href="#jsSfhbaGAqFkFUsb;VhBzhbaGAqFkFTbk" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramjsSfhbaGAqFkFUsb" coords="303, 241, 449, 271" coords2="303, 241, 449, 271" shape="rect" alt="Rijen:Text Field" id="areadiagramjsSfhbaGAqFkFUsb_map_jmBzhbaGAqFkFTba" href="#jsSfhbaGAqFkFUsb;jmBzhbaGAqFkFTba" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramjsSfhbaGAqFkFUsb" coords="303, 196, 449, 226" coords2="303, 196, 449, 226" shape="rect" alt="Kerkstraat 165:Text Field" id="areadiagramjsSfhbaGAqFkFUsb_map_UIBzhbaGAqFkFTbQ" href="#jsSfhbaGAqFkFUsb;UIBzhbaGAqFkFTbQ" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramjsSfhbaGAqFkFUsb" coords="303, 151, 449, 181" coords2="303, 151, 449, 181" shape="rect" alt="Oomen:Text Field" id="areadiagramjsSfhbaGAqFkFUsb_map_6X.zhbaGAqFkFTbG" href="#jsSfhbaGAqFkFUsb;6X.zhbaGAqFkFTbG" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramjsSfhbaGAqFkFUsb" coords="303, 106, 449, 136" coords2="303, 106, 449, 136" shape="rect" alt="Joost:Text Field" id="areadiagramjsSfhbaGAqFkFUsb_map_3g.zhbaGAqFkFTa." href="#jsSfhbaGAqFkFUsb;3g.zhbaGAqFkFTa." onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagramjsSfhbaGAqFkFUsb" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;font-weight:normal;margin-right:0;margin-left:0;font-size:12px;font-family:Dialog;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-bottom:.0001pt;margin-right:0pt;margin-left:0pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Verzenden van ingevoerde gegevens naar de database
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="326, 488, 426, 518" coords2="326, 488, 426, 518" shape="rect" alt="Verzenden:Button" id="areadiagramjsSfhbaGAqFkFUsb_map_wCuzhbaGAqFkFTa4" href="#jsSfhbaGAqFkFUsb;wCuzhbaGAqFkFTa4" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagramjsSfhbaGAqFkFUsb" coords="2, 2, 607, 566" coords2="2, 2, 607, 566" shape="rect" alt="Desktop Frame:Frame" id="areadiagramjsSfhbaGAqFkFUsb_map_o.2zhbaGAqFkFTaZ" href="#jsSfhbaGAqFkFUsb;o.2zhbaGAqFkFTaZ" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+</map>
+					<img id="diagrambAwaRbaGAqFkFXqy" src="../images/NAW_gegevens_Gebruiker_voert_voornaam_achternaam_adres_bedrijfsnaam_telefoonnummer_VATnummer_KVKnummer_in22.png" usemap="#diagrambAwaRbaGAqFkFXqy_map" class="Image" width="611" height="570" style="display: none;"/>
+					<map name="diagrambAwaRbaGAqFkFXqy_map">
+<area imageId="diagrambAwaRbaGAqFkFXqy" coords="77, 52, 483, 91" coords2="77, 52, 483, 91" shape="rect" alt="Voer alle velden in voor een volledige registratie:Label" id="areadiagrambAwaRbaGAqFkFXqy_map_fPLLhbaGAqFkFTin" href="#bAwaRbaGAqFkFXqy;fPLLhbaGAqFkFTin" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagrambAwaRbaGAqFkFXqy" coords="155, 424, 265, 448" coords2="155, 424, 265, 448" shape="rect" alt="Bedrijfsnaam:Label" id="areadiagrambAwaRbaGAqFkFXqy_map_JG1LhbaGAqFkFTiG" href="#bAwaRbaGAqFkFXqy;JG1LhbaGAqFkFTiG" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagrambAwaRbaGAqFkFXqy" coords="155, 379, 265, 403" coords2="155, 379, 265, 403" shape="rect" alt="BTW nummer:Label" id="areadiagrambAwaRbaGAqFkFXqy_map_8VpLhbaGAqFkFThO" href="#bAwaRbaGAqFkFXqy;8VpLhbaGAqFkFThO" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagrambAwaRbaGAqFkFXqy" coords="155, 334, 265, 358" coords2="155, 334, 265, 358" shape="rect" alt="KVK nummer:Label" id="areadiagrambAwaRbaGAqFkFXqy_map_jWxLhbaGAqFkFTg9" href="#bAwaRbaGAqFkFXqy;jWxLhbaGAqFkFTg9" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagrambAwaRbaGAqFkFXqy" coords="155, 289, 265, 313" coords2="155, 289, 265, 313" shape="rect" alt="Telefoonnummer:Label" id="areadiagrambAwaRbaGAqFkFXqy_map_GceLhbaGAqFkFTgo" href="#bAwaRbaGAqFkFXqy;GceLhbaGAqFkFTgo" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagrambAwaRbaGAqFkFXqy" coords="155, 244, 236, 268" coords2="155, 244, 236, 268" shape="rect" alt="Plaats:Label" id="areadiagrambAwaRbaGAqFkFXqy_map_kbWLhbaGAqFkFTgR" href="#bAwaRbaGAqFkFXqy;kbWLhbaGAqFkFTgR" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagrambAwaRbaGAqFkFXqy" coords="155, 199, 236, 223" coords2="155, 199, 236, 223" shape="rect" alt="Adres:Label" id="areadiagrambAwaRbaGAqFkFXqy_map_MkGLhbaGAqFkFTf4" href="#bAwaRbaGAqFkFXqy;MkGLhbaGAqFkFTf4" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagrambAwaRbaGAqFkFXqy" coords="159, 154, 240, 178" coords2="159, 154, 240, 178" shape="rect" alt="Achternaam:Label" id="areadiagrambAwaRbaGAqFkFXqy_map_g.qLhbaGAqFkFTfn" href="#bAwaRbaGAqFkFXqy;g.qLhbaGAqFkFTfn" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagrambAwaRbaGAqFkFXqy" coords="159, 106, 231, 130" coords2="159, 106, 231, 130" shape="rect" alt="Voornaam::Label" id="areadiagrambAwaRbaGAqFkFXqy_map_kr4LhbaGAqFkFTee" href="#bAwaRbaGAqFkFXqy;kr4LhbaGAqFkFTee" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagrambAwaRbaGAqFkFXqy" coords="303, 421, 449, 451" coords2="303, 421, 449, 451" shape="rect" alt="ClockYourHours:Text Field" id="areadiagrambAwaRbaGAqFkFXqy_map_vtBzhbaGAqFkFTcC" href="#bAwaRbaGAqFkFXqy;vtBzhbaGAqFkFTcC" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagrambAwaRbaGAqFkFXqy" coords="303, 376, 449, 406" coords2="303, 376, 449, 406" shape="rect" alt="1234567:Text Field" id="areadiagrambAwaRbaGAqFkFXqy_map_k1BzhbaGAqFkFTb4" href="#bAwaRbaGAqFkFXqy;k1BzhbaGAqFkFTb4" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagrambAwaRbaGAqFkFXqy" coords="303, 331, 449, 361" coords2="303, 331, 449, 361" shape="rect" alt="123456:Text Field" id="areadiagrambAwaRbaGAqFkFXqy_map_K5BzhbaGAqFkFTbu" href="#bAwaRbaGAqFkFXqy;K5BzhbaGAqFkFTbu" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagrambAwaRbaGAqFkFXqy" coords="303, 286, 449, 316" coords2="303, 286, 449, 316" shape="rect" alt="0617162543:Text Field" id="areadiagrambAwaRbaGAqFkFXqy_map_VhBzhbaGAqFkFTbk" href="#bAwaRbaGAqFkFXqy;VhBzhbaGAqFkFTbk" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagrambAwaRbaGAqFkFXqy" coords="303, 241, 449, 271" coords2="303, 241, 449, 271" shape="rect" alt="Rijen:Text Field" id="areadiagrambAwaRbaGAqFkFXqy_map_jmBzhbaGAqFkFTba" href="#bAwaRbaGAqFkFXqy;jmBzhbaGAqFkFTba" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagrambAwaRbaGAqFkFXqy" coords="303, 196, 449, 226" coords2="303, 196, 449, 226" shape="rect" alt="Kerkstraat 165:Text Field" id="areadiagrambAwaRbaGAqFkFXqy_map_UIBzhbaGAqFkFTbQ" href="#bAwaRbaGAqFkFXqy;UIBzhbaGAqFkFTbQ" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagrambAwaRbaGAqFkFXqy" coords="303, 151, 449, 181" coords2="303, 151, 449, 181" shape="rect" alt="Oomen:Text Field" id="areadiagrambAwaRbaGAqFkFXqy_map_6X.zhbaGAqFkFTbG" href="#bAwaRbaGAqFkFXqy;6X.zhbaGAqFkFTbG" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagrambAwaRbaGAqFkFXqy" coords="303, 106, 449, 136" coords2="303, 106, 449, 136" shape="rect" alt="Joost:Text Field" id="areadiagrambAwaRbaGAqFkFXqy_map_3g.zhbaGAqFkFTa." href="#bAwaRbaGAqFkFXqy;3g.zhbaGAqFkFTa." onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagrambAwaRbaGAqFkFXqy" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;font-weight:normal;margin-right:0;margin-left:0;font-size:12px;font-family:Dialog;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-bottom:.0001pt;margin-right:0pt;margin-left:0pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Verzenden van ingevoerde gegevens naar de database
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="326, 488, 426, 518" coords2="326, 488, 426, 518" shape="rect" alt="Verzenden:Button" id="areadiagrambAwaRbaGAqFkFXqy_map_wCuzhbaGAqFkFTa4" href="#bAwaRbaGAqFkFXqy;wCuzhbaGAqFkFTa4" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagrambAwaRbaGAqFkFXqy" coords="2, 2, 607, 566" coords2="2, 2, 607, 566" shape="rect" alt="Desktop Frame:Frame" id="areadiagrambAwaRbaGAqFkFXqy_map_o.2zhbaGAqFkFTaZ" href="#bAwaRbaGAqFkFXqy;o.2zhbaGAqFkFTaZ" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+</map>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+				Elements			</td>
+		</tr>
+		<tr>
+			<td style="height: 5px">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0" id="elementsXe2zhbaGAqFkFTaY">
+		<tr>
+			<td colSpan="4" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="30%">
+<span class="TableHeaderText">Display Text</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td>
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/WFDesktopFrame.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/WFDesktopFrame.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Desktop Frame : Frame</span>				</span>
+<a name="Xe2zhbaGAqFkFTaY;o.2zhbaGAqFkFTaZ"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Button.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Button.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Verzenden : Button</span>				</span>
+<a name="Xe2zhbaGAqFkFTaY;wCuzhbaGAqFkFTa4"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;font-weight:normal;margin-right:0;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-bottom:.0001pt;margin-right:0pt;margin-left:0pt;margin-top:0pt;">
+      Verzenden van ingevoerde gegevens naar de database
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/TextField.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/TextField.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Text Field : Text Field</span>				</span>
+<a name="Xe2zhbaGAqFkFTaY;3g.zhbaGAqFkFTa."></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/TextField.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/TextField.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Text Field : Text Field</span>				</span>
+<a name="Xe2zhbaGAqFkFTaY;6X.zhbaGAqFkFTbG"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/TextField.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/TextField.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Text Field : Text Field</span>				</span>
+<a name="Xe2zhbaGAqFkFTaY;UIBzhbaGAqFkFTbQ"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/TextField.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/TextField.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Text Field : Text Field</span>				</span>
+<a name="Xe2zhbaGAqFkFTaY;jmBzhbaGAqFkFTba"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/TextField.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/TextField.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Text Field : Text Field</span>				</span>
+<a name="Xe2zhbaGAqFkFTaY;VhBzhbaGAqFkFTbk"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/TextField.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/TextField.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Text Field : Text Field</span>				</span>
+<a name="Xe2zhbaGAqFkFTaY;K5BzhbaGAqFkFTbu"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/TextField.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/TextField.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Text Field : Text Field</span>				</span>
+<a name="Xe2zhbaGAqFkFTaY;k1BzhbaGAqFkFTb4"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/TextField.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/TextField.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Text Field : Text Field</span>				</span>
+<a name="Xe2zhbaGAqFkFTaY;vtBzhbaGAqFkFTcC"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Voornaam: : Label</span>				</span>
+<a name="Xe2zhbaGAqFkFTaY;kr4LhbaGAqFkFTee"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Achternaam : Label</span>				</span>
+<a name="Xe2zhbaGAqFkFTaY;g.qLhbaGAqFkFTfn"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Adres : Label</span>				</span>
+<a name="Xe2zhbaGAqFkFTaY;MkGLhbaGAqFkFTf4"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Plaats : Label</span>				</span>
+<a name="Xe2zhbaGAqFkFTaY;kbWLhbaGAqFkFTgR"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Telefoonnummer : Label</span>				</span>
+<a name="Xe2zhbaGAqFkFTaY;GceLhbaGAqFkFTgo"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">KVK nummer : Label</span>				</span>
+<a name="Xe2zhbaGAqFkFTaY;jWxLhbaGAqFkFTg9"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">BTW nummer : Label</span>				</span>
+<a name="Xe2zhbaGAqFkFTaY;8VpLhbaGAqFkFThO"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Bedrijfsnaam : Label</span>				</span>
+<a name="Xe2zhbaGAqFkFTaY;JG1LhbaGAqFkFTiG"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Voer alle velden in voor een volledige registratie : Label</span>				</span>
+<a name="Xe2zhbaGAqFkFTaY;fPLLhbaGAqFkFTin"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0" style="display: none;" id="elementsjsSfhbaGAqFkFUsb">
+		<tr>
+			<td colSpan="4" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="30%">
+<span class="TableHeaderText">Display Text</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td>
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/WFDesktopFrame.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/WFDesktopFrame.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Desktop Frame : Frame</span>				</span>
+<a name="jsSfhbaGAqFkFUsb;o.2zhbaGAqFkFTaZ"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Button.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Button.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Verzenden : Button</span>				</span>
+<a name="jsSfhbaGAqFkFUsb;wCuzhbaGAqFkFTa4"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;font-weight:normal;margin-right:0;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-bottom:.0001pt;margin-right:0pt;margin-left:0pt;margin-top:0pt;">
+      Verzenden van ingevoerde gegevens naar de database
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/TextField.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/TextField.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Joost : Text Field</span>				</span>
+<a name="jsSfhbaGAqFkFUsb;3g.zhbaGAqFkFTa."></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/TextField.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/TextField.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Oomen : Text Field</span>				</span>
+<a name="jsSfhbaGAqFkFUsb;6X.zhbaGAqFkFTbG"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/TextField.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/TextField.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Kerkstraat 165 : Text Field</span>				</span>
+<a name="jsSfhbaGAqFkFUsb;UIBzhbaGAqFkFTbQ"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/TextField.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/TextField.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Rijen : Text Field</span>				</span>
+<a name="jsSfhbaGAqFkFUsb;jmBzhbaGAqFkFTba"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/TextField.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/TextField.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">0161232499 : Text Field</span>				</span>
+<a name="jsSfhbaGAqFkFUsb;VhBzhbaGAqFkFTbk"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/TextField.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/TextField.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">123456 : Text Field</span>				</span>
+<a name="jsSfhbaGAqFkFUsb;K5BzhbaGAqFkFTbu"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/TextField.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/TextField.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">1234567 : Text Field</span>				</span>
+<a name="jsSfhbaGAqFkFUsb;k1BzhbaGAqFkFTb4"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/TextField.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/TextField.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">ClockYourHours : Text Field</span>				</span>
+<a name="jsSfhbaGAqFkFUsb;vtBzhbaGAqFkFTcC"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Voornaam: : Label</span>				</span>
+<a name="jsSfhbaGAqFkFUsb;kr4LhbaGAqFkFTee"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Achternaam : Label</span>				</span>
+<a name="jsSfhbaGAqFkFUsb;g.qLhbaGAqFkFTfn"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Adres : Label</span>				</span>
+<a name="jsSfhbaGAqFkFUsb;MkGLhbaGAqFkFTf4"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Plaats : Label</span>				</span>
+<a name="jsSfhbaGAqFkFUsb;kbWLhbaGAqFkFTgR"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Telefoonnummer : Label</span>				</span>
+<a name="jsSfhbaGAqFkFUsb;GceLhbaGAqFkFTgo"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">KVK nummer : Label</span>				</span>
+<a name="jsSfhbaGAqFkFUsb;jWxLhbaGAqFkFTg9"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">BTW nummer : Label</span>				</span>
+<a name="jsSfhbaGAqFkFUsb;8VpLhbaGAqFkFThO"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Bedrijfsnaam : Label</span>				</span>
+<a name="jsSfhbaGAqFkFUsb;JG1LhbaGAqFkFTiG"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Voer alle velden in voor een volledige registratie : Label</span>				</span>
+<a name="jsSfhbaGAqFkFUsb;fPLLhbaGAqFkFTin"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0" style="display: none;" id="elementsbAwaRbaGAqFkFXqy">
+		<tr>
+			<td colSpan="4" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="30%">
+<span class="TableHeaderText">Display Text</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td>
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/WFDesktopFrame.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/WFDesktopFrame.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Desktop Frame : Frame</span>				</span>
+<a name="bAwaRbaGAqFkFXqy;o.2zhbaGAqFkFTaZ"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Button.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Button.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Verzenden : Button</span>				</span>
+<a name="bAwaRbaGAqFkFXqy;wCuzhbaGAqFkFTa4"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;font-weight:normal;margin-right:0;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-bottom:.0001pt;margin-right:0pt;margin-left:0pt;margin-top:0pt;">
+      Verzenden van ingevoerde gegevens naar de database
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/TextField.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/TextField.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Joost : Text Field</span>				</span>
+<a name="bAwaRbaGAqFkFXqy;3g.zhbaGAqFkFTa."></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/TextField.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/TextField.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Oomen : Text Field</span>				</span>
+<a name="bAwaRbaGAqFkFXqy;6X.zhbaGAqFkFTbG"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/TextField.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/TextField.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Kerkstraat 165 : Text Field</span>				</span>
+<a name="bAwaRbaGAqFkFXqy;UIBzhbaGAqFkFTbQ"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/TextField.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/TextField.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Rijen : Text Field</span>				</span>
+<a name="bAwaRbaGAqFkFXqy;jmBzhbaGAqFkFTba"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/TextField.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/TextField.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">0617162543 : Text Field</span>				</span>
+<a name="bAwaRbaGAqFkFXqy;VhBzhbaGAqFkFTbk"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/TextField.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/TextField.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">123456 : Text Field</span>				</span>
+<a name="bAwaRbaGAqFkFXqy;K5BzhbaGAqFkFTbu"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/TextField.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/TextField.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">1234567 : Text Field</span>				</span>
+<a name="bAwaRbaGAqFkFXqy;k1BzhbaGAqFkFTb4"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/TextField.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/TextField.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">ClockYourHours : Text Field</span>				</span>
+<a name="bAwaRbaGAqFkFXqy;vtBzhbaGAqFkFTcC"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Voornaam: : Label</span>				</span>
+<a name="bAwaRbaGAqFkFXqy;kr4LhbaGAqFkFTee"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Achternaam : Label</span>				</span>
+<a name="bAwaRbaGAqFkFXqy;g.qLhbaGAqFkFTfn"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Adres : Label</span>				</span>
+<a name="bAwaRbaGAqFkFXqy;MkGLhbaGAqFkFTf4"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Plaats : Label</span>				</span>
+<a name="bAwaRbaGAqFkFXqy;kbWLhbaGAqFkFTgR"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Telefoonnummer : Label</span>				</span>
+<a name="bAwaRbaGAqFkFXqy;GceLhbaGAqFkFTgo"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">KVK nummer : Label</span>				</span>
+<a name="bAwaRbaGAqFkFXqy;jWxLhbaGAqFkFTg9"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">BTW nummer : Label</span>				</span>
+<a name="bAwaRbaGAqFkFXqy;8VpLhbaGAqFkFThO"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Bedrijfsnaam : Label</span>				</span>
+<a name="bAwaRbaGAqFkFXqy;JG1LhbaGAqFkFTiG"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Label.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Label.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span class="TableContent">Voer alle velden in voor een volledige registratie : Label</span>				</span>
+<a name="bAwaRbaGAqFkFXqy;fPLLhbaGAqFkFTin"></a>			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<div style="width:370px; height:680px; position: fixed; _position: absolute; overflow: scroll; background-color: #F0F0F0; top: 100px; left: 100px; padding: 10px; display: none;" id="wireframeStatesDialog">
+		<span data-value="Desktop Wireframe - NAW gegevens - Gebruiker voert voornaam, achternaam, adres, bedrijfsnaam, telefoonnummer, VATnummer, KVKnummer in" style="display: none;" id="pageTitleTextXe2zhbaGAqFkFTaY">
+		</span>
+		<table border="0" cellpadding="0" width="100%" cellspacing="0" style=" left: 30; top: 30; width: 340; height: 225; position: absolute; z-index: 10; background: white; border: black 3px solid; padding: 15px 20px 10px 20px; text-align: center;">
+			<tr>
+				<td>
+<a href="javascript:okWireframeStatesDialog('selectShapeXe2zhbaGAqFkFTaY', 'diagramXe2zhbaGAqFkFTaY', 'none', 'elementsXe2zhbaGAqFkFTaY', 'PageTitleText', 'pageTitleTextXe2zhbaGAqFkFTaY')"><img src="../images/NAW_gegevens_Gebruiker_voert_voornaam_achternaam_adres_bedrijfsnaam_telefoonnummer_VATnummer_KVKnummer_in_preview.png" class="Image" style=" width: 214; height: 200; border: none !important;"/>
+</a>				</td>
+			</tr>
+			<tr>
+				<td>
+<a href="javascript:okWireframeStatesDialog('selectShapeXe2zhbaGAqFkFTaY', 'diagramXe2zhbaGAqFkFTaY', 'none', 'elementsXe2zhbaGAqFkFTaY', 'PageTitleText', 'pageTitleTextXe2zhbaGAqFkFTaY')"><span style="color: black !important" class="TableContent ItemLink">Gebruiker voert voornaam, achternaam, adres, bedrijfsnaam, telefoonnummer, VATnummer, KVKnummer in</span></a>				</td>
+			</tr>
+		</table>
+		<div style="position:absolute; z-index:2; width: 3px; height: 40px; left: 200px; top: 245px; background: black; -webkit-transform: rotate(0deg); -moz-transform: rotate(0deg); -o-transform: rotate(0deg); -ms-transform: rotate(0deg); transform: rotate(0deg); -webkit-transform-origin: 0 0; -moz-transform-origin: 0 0; -o-transform-origin: 0 0; -ms-transform-origin: 0 0; transform-origin: 0 0;">
+		</div>
+		<div style="position:absolute; z-index:2; width: 3px; height: 70px; left: 200px; top: 285px; background: black; -webkit-transform: rotate(0deg); -moz-transform: rotate(0deg); -o-transform: rotate(0deg); -ms-transform: rotate(0deg); transform: rotate(0deg); -webkit-transform-origin: 0 0; -moz-transform-origin: 0 0; -o-transform-origin: 0 0; -ms-transform-origin: 0 0; transform-origin: 0 0;">
+		</div>
+		<span data-value="Desktop Wireframe - NAW gegevens - Gebruiker voert voornaam, achternaam, adres, bedrijfsnaam, telefoonnummer, VATnummer, KVKnummer in2" style="display: none;" id="pageTitleTextjsSfhbaGAqFkFUsb">
+		</span>
+		<table border="0" cellpadding="0" width="100%" cellspacing="0" style=" left: 30; top: 355; width: 340; height: 225; position: absolute; z-index: 10; background: white; border: black 3px solid; padding: 15px 20px 10px 20px; text-align: center;">
+			<tr>
+				<td>
+<a href="javascript:okWireframeStatesDialog('selectShapejsSfhbaGAqFkFUsb', 'diagramjsSfhbaGAqFkFUsb', 'none', 'elementsjsSfhbaGAqFkFUsb', 'PageTitleText', 'pageTitleTextjsSfhbaGAqFkFUsb')"><img src="../images/NAW_gegevens_Gebruiker_voert_voornaam_achternaam_adres_bedrijfsnaam_telefoonnummer_VATnummer_KVKnummer_in2_preview.png" class="Image" style=" width: 214; height: 200; border: none !important;"/>
+</a>				</td>
+			</tr>
+			<tr>
+				<td>
+<a href="javascript:okWireframeStatesDialog('selectShapejsSfhbaGAqFkFUsb', 'diagramjsSfhbaGAqFkFUsb', 'none', 'elementsjsSfhbaGAqFkFUsb', 'PageTitleText', 'pageTitleTextjsSfhbaGAqFkFUsb')"><span style="color: black !important" class="TableContent ItemLink">Gebruiker voert voornaam, achternaam, adres, bedrijfsnaam, telefoonnummer, VATnummer, KVKnummer in2</span></a>				</td>
+			</tr>
+		</table>
+		<div style="position:absolute; z-index:2; width: 3px; height: 40px; left: 200px; top: 570px; background: black; -webkit-transform: rotate(0deg); -moz-transform: rotate(0deg); -o-transform: rotate(0deg); -ms-transform: rotate(0deg); transform: rotate(0deg); -webkit-transform-origin: 0 0; -moz-transform-origin: 0 0; -o-transform-origin: 0 0; -ms-transform-origin: 0 0; transform-origin: 0 0;">
+		</div>
+		<div style="position:absolute; z-index:2; width: 3px; height: 70px; left: 200px; top: 610px; background: black; -webkit-transform: rotate(0deg); -moz-transform: rotate(0deg); -o-transform: rotate(0deg); -ms-transform: rotate(0deg); transform: rotate(0deg); -webkit-transform-origin: 0 0; -moz-transform-origin: 0 0; -o-transform-origin: 0 0; -ms-transform-origin: 0 0; transform-origin: 0 0;">
+		</div>
+		<span data-value="Desktop Wireframe - NAW gegevens - Gebruiker voert voornaam, achternaam, adres, bedrijfsnaam, telefoonnummer, VATnummer, KVKnummer in22" style="display: none;" id="pageTitleTextbAwaRbaGAqFkFXqy">
+		</span>
+		<table border="0" cellpadding="0" width="100%" cellspacing="0" style=" left: 30; top: 680; width: 340; height: 225; position: absolute; z-index: 10; background: white; border: black 3px solid; padding: 15px 20px 10px 20px; text-align: center;">
+			<tr>
+				<td>
+<a href="javascript:okWireframeStatesDialog('selectShapebAwaRbaGAqFkFXqy', 'diagrambAwaRbaGAqFkFXqy', 'none', 'elementsbAwaRbaGAqFkFXqy', 'PageTitleText', 'pageTitleTextbAwaRbaGAqFkFXqy')"><img src="../images/NAW_gegevens_Gebruiker_voert_voornaam_achternaam_adres_bedrijfsnaam_telefoonnummer_VATnummer_KVKnummer_in22_preview.png" class="Image" style=" width: 214; height: 200; border: none !important;"/>
+</a>				</td>
+			</tr>
+			<tr>
+				<td>
+<a href="javascript:okWireframeStatesDialog('selectShapebAwaRbaGAqFkFXqy', 'diagrambAwaRbaGAqFkFXqy', 'none', 'elementsbAwaRbaGAqFkFXqy', 'PageTitleText', 'pageTitleTextbAwaRbaGAqFkFXqy')"><span style="color: black !important" class="TableContent ItemLink">Gebruiker voert voornaam, achternaam, adres, bedrijfsnaam, telefoonnummer, VATnummer, KVKnummer in22</span></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="height: 20px">
+	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		JavaBlok2.1	</div>
+</body>
+</html>

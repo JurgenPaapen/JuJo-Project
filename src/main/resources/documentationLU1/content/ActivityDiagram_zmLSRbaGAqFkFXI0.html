@@ -1,0 +1,359 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Activity Diagram - voert persoonsgegevens in - Scenario</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;" id="spotlight_top">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;" id="spotlight_bottom">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;" id="spotlight_left">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;" id="spotlight_right">
+	</div>
+	<canvas width="100" style="position:absolute; z-index:2; visibility:hidden" id="spotlight_c" height="100">
+	</canvas>
+	<div style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" id="spotLightResourcesTop">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+<a href="#top"><img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>				</td>
+				<td>
+<a href="javascript:clearSpotLightFromOpenSpecButton();"><img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" id="spotLightResourcesRight">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+<a href="#top"><img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>				</td>
+			</tr>
+			<tr>
+				<td>
+<a href="javascript:clearSpotLightFromOpenSpecButton();"><img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute;z-index:4;visibility:hidden" id="linkPopupMenuLayer">
+		<table border="0" width="100%" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" id="linkPopupMenuTable">
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="referenceIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="subdiagramIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="transitorIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="documentationIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		JavaBlok2.1	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div style="position:absolute; z-index:21; visibility:hidden" id="referencedBys">
+		<table border="0" width="100%" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" id="referencedBysTable">
+		</table>
+	</div>
+	<div style="position:absolute; z-index:21; visibility:hidden" id="vplink">
+		<table border="1" cellpadding="0" cellspacing="0" bordercolor="#A9BFD3">
+			<tr>
+				<td>
+					<table border="0" cellpadding="0" width="100%" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+								<select onchange="vpLinkToggleName()" id="vplink-linkType">
+	<option value="Project Link">Project Link</option>
+	<option value="Page URL">Page URL</option>
+</select>
+							</td>
+							<td style="font-size: 12px;" align="right">
+								<input onclick="javascript: vpLinkToggleName()" id="vplink-checkbox" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+<a href="UseCaseDiagram_N3VX7zaFS_gS8grH.html" class="PageParentTitle">System : System</a><span class="PageParentTitle">&nbsp;.&nbsp;</span><a href="UseCaseDiagram_N3VX7zaFS_gS8grH.html" class="PageParentTitle">AdministatieLevel : Package</a><span class="PageParentTitle">&nbsp;.&nbsp;</span><a href="UseCaseDiagram_N3VX7zaFS_gS8grH.html" class="PageParentTitle">voert persoonsgegevens in : Use Case</a>	</p>
+	<p class="PageTitle">
+		<span id="PageTitleText">
+			Activity Diagram - voert persoonsgegevens in - Scenario		</span>
+<a onclick="javascript: showVpLink('JavaBlok2.1.vpp://diagram/zmLSRbaGAqFkFXI0', 'voert persoonsgegevens in - Scenario\nJavaBlok2.1.vpp://diagram/zmLSRbaGAqFkFXI0', 'voert persoonsgegevens in - Scenario', this); return false;" style="padding-left: 16px; font-size: 12px" href="#"><img src="../images/icons/link.png" border="0"> link</a>	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table border="0" cellpadding="0" width="100%" cellspacing="0" style="position: absolute; top: 0; left: 0; z-index: 20;" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),hideLinkPopup(),hideReferencedBys();">
+			<tr>
+				<td>
+<span class="TableContent">Jump to:</span>					<select id="SelectShape" class="TableContent" onChange="scrollWin('diagram', this.value);hideLinkPopup();showSpotLight('diagram', this.value)">
+<option value="">Please select a model element</option>
+<option value="shape|484.0|726.0|20.0|20.0|ActivityFinalNode_lWLSRbaGAqFkFXJn.html|ActivityFinalNode_lWLSRbaGAqFkFXJn.html|VWLSRbaGAqFkFXJo" id="optionVWLSRbaGAqFkFXJo">Unnamed Activity Final Node : Activity Final Node</option>
+<option value="shape|305.0|626.0|379.0|40.0|ActivityAction_ZWLSRbaGAqFkFXJh.html|ActivityAction_ZWLSRbaGAqFkFXJh.html|5WLSRbaGAqFkFXJi" id="option5WLSRbaGAqFkFXJi">4. SYSTEM slaat de gegevens op in DatabaseClientRegistrationDAO : Action</option>
+<option value="shape|396.0|526.0|197.0|40.0|ActivityAction_xWLSRbaGAqFkFXJb.html|ActivityAction_xWLSRbaGAqFkFXJb.html|JWLSRbaGAqFkFXJc" id="optionJWLSRbaGAqFkFXJc">3. Gebruiker drukt op verzenden : Action</option>
+<option value="shape|484.0|426.0|20.0|40.0|MergeNode_uWLSRbaGAqFkFXJS.html|MergeNode_uWLSRbaGAqFkFXJS.html|.WLSRbaGAqFkFXJT" id="option.WLSRbaGAqFkFXJT">Unnamed Merge Node : Merge Node</option>
+<option value="shape|534.0|282.0|291.0|40.0|ActivityAction_WWLSRbaGAqFkFXJM.html|ActivityAction_WWLSRbaGAqFkFXJM.html|2WLSRbaGAqFkFXJN" id="option2WLSRbaGAqFkFXJN">2.a.1. SYSTEM "Voer AUB alle gevraagde velden in" : Action</option>
+<option value="shape|299.0|282.0|20.0|40.0|DecisionNode_6WLSRbaGAqFkFXJG.html|DecisionNode_6WLSRbaGAqFkFXJG.html|mWLSRbaGAqFkFXJH" id="optionmWLSRbaGAqFkFXJH">2.a. Als niet alle velden zijn ingevoerd : Decision Node</option>
+<option value="shape|2.0|182.0|615.0|40.0|ActivityAction_yWLSRbaGAqFkFXJA.html|ActivityAction_yWLSRbaGAqFkFXJA.html|qWLSRbaGAqFkFXJB" id="optionqWLSRbaGAqFkFXJB">2. Gebruiker voert voornaam, achternaam, adres, bedrijfsnaam, telefoonnummer, VATnummer, KVKnummer in : Action</option>
+<option value="shape|223.0|82.0|172.0|40.0|ActivityAction_IWLSRbaGAqFkFXI5.html|ActivityAction_IWLSRbaGAqFkFXI5.html|kWLSRbaGAqFkFXI6" id="optionkWLSRbaGAqFkFXI6">1. Gebruiker start applicatie : Action</option>
+<option value="shape|298.0|2.0|22.0|20.0|InitialNode_HmLSRbaGAqFkFXI2.html|InitialNode_HmLSRbaGAqFkFXI2.html|gWLSRbaGAqFkFXI3" id="optiongWLSRbaGAqFkFXI3">Unnamed Initial Node : Initial Node</option>
+</select>				</td>
+			</tr>
+		</table>
+		<table border="0" cellpadding="0" width="100%" cellspacing="0" style="position: relative; top: 24;">
+			<tr>
+				<td>
+					<img id="diagram" src="../images/voert_persoonsgegevens_in_Scenario.png" usemap="#diagram_map" class="Image" width="829" height="750"/>
+					<map name="diagram_map">
+<area imageId="diagram" coords="302.0, 22.0, 302.0, 82.0, 316.0, 82.0, 316.0, 22.0" coords2="302.0, 22.0, 302.0, 82.0, 316.0, 82.0, 316.0, 22.0" shape="poly" alt=":Control Flow" id="areadiagram_map_SWLSRbaGAqFkFXI._default" href="ControlFlow_8WLSRbaGAqFkFXI9.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','302.0, 22.0, 302.0, 82.0, 316.0, 82.0, 316.0, 22.0',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=gWLSRbaGAqFkFXI3/Unnamed/InitialNode'),new Array('ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=kWLSRbaGAqFkFXI6/1. Gebruiker start applicatie/Action')),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '302.0, 22.0, 302.0, 82.0, 316.0, 82.0, 316.0, 22.0')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="302.0, 122.0, 302.0, 182.0, 316.0, 182.0, 316.0, 122.0" coords2="302.0, 122.0, 302.0, 182.0, 316.0, 182.0, 316.0, 122.0" shape="poly" alt=":Control Flow" id="areadiagram_map_qWLSRbaGAqFkFXJE_default" href="ControlFlow_qWLSRbaGAqFkFXJD.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','302.0, 122.0, 302.0, 182.0, 316.0, 182.0, 316.0, 122.0',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=kWLSRbaGAqFkFXI6/1. Gebruiker start applicatie/Action'),new Array('ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=qWLSRbaGAqFkFXJB/2. Gebruiker voert voornaam, achternaam, adres, bedrijfsnaam, telefoonnummer, VATnummer, KVKnummer in/Action')),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '302.0, 122.0, 302.0, 182.0, 316.0, 182.0, 316.0, 122.0')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="302.0, 222.0, 302.0, 282.0, 316.0, 282.0, 316.0, 222.0" coords2="302.0, 222.0, 302.0, 282.0, 316.0, 282.0, 316.0, 222.0" shape="poly" alt=":Control Flow" id="areadiagram_map_WWLSRbaGAqFkFXJK_default" href="ControlFlow_mWLSRbaGAqFkFXJJ.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','302.0, 222.0, 302.0, 282.0, 316.0, 282.0, 316.0, 222.0',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=qWLSRbaGAqFkFXJB/2. Gebruiker voert voornaam, achternaam, adres, bedrijfsnaam, telefoonnummer, VATnummer, KVKnummer in/Action'),new Array('ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=mWLSRbaGAqFkFXJH/2.a. Als niet alle velden zijn ingevoerd/DecisionNode')),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '302.0, 222.0, 302.0, 282.0, 316.0, 282.0, 316.0, 222.0')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="319.0, 295.0, 319.0, 309.0, 534.0, 309.0, 534.0, 295.0" coords2="319.0, 295.0, 319.0, 309.0, 534.0, 309.0, 534.0, 295.0" shape="poly" alt=":Control Flow" id="areadiagram_map_OWLSRbaGAqFkFXJQ_default" href="ControlFlow_2WLSRbaGAqFkFXJP.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','319.0, 295.0, 319.0, 309.0, 534.0, 309.0, 534.0, 295.0',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=mWLSRbaGAqFkFXJH/2.a. Als niet alle velden zijn ingevoerd/DecisionNode'),new Array('ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=2WLSRbaGAqFkFXJN/2.a.1. SYSTEM &#x22;Voer AUB alle gevraagde velden in&#x22;/Action')),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '319.0, 295.0, 319.0, 309.0, 534.0, 309.0, 534.0, 295.0')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="672.0, 322.0, 672.0, 354.10605, 504.0, 433.01514, 504.0, 448.36365, 672.9677, 369.0, 686.0, 369.0, 686.0, 362.87878, 690.0, 361.0, 686.0, 350.6, 686.0, 322.0" coords2="672.0, 322.0, 672.0, 354.10605, 504.0, 433.01514, 504.0, 448.36365, 672.9677, 369.0, 686.0, 369.0, 686.0, 362.87878, 690.0, 361.0, 686.0, 350.6, 686.0, 322.0" shape="poly" alt=":Control Flow" id="areadiagram_map_hWLSRbaGAqFkFXJW_default" href="ControlFlow__WLSRbaGAqFkFXJV.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','672.0, 322.0, 672.0, 354.10605, 504.0, 433.01514, 504.0, 448.36365, 672.9677, 369.0, 686.0, 369.0, 686.0, 362.87878, 690.0, 361.0, 686.0, 350.6, 686.0, 322.0',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=2WLSRbaGAqFkFXJN/2.a.1. SYSTEM &#x22;Voer AUB alle gevraagde velden in&#x22;/Action'),new Array('ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=.WLSRbaGAqFkFXJT/Unnamed/MergeNode')),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '672.0, 322.0, 672.0, 354.10605, 504.0, 433.01514, 504.0, 448.36365, 672.9677, 369.0, 686.0, 369.0, 686.0, 362.87878, 690.0, 361.0, 686.0, 350.6, 686.0, 322.0')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="302.0, 322.0, 302.0, 355.0, 297.0, 368.0, 302.0, 370.17172, 302.0, 370.17172, 302.0, 376.0, 315.4186, 376.0, 484.0, 449.22223, 484.0, 449.22223, 484.0, 434.0505, 484.0, 434.0505, 316.0, 361.0808, 316.0, 322.0" coords2="302.0, 322.0, 302.0, 355.0, 297.0, 368.0, 302.0, 370.17172, 302.0, 370.17172, 302.0, 376.0, 315.4186, 376.0, 484.0, 449.22223, 484.0, 449.22223, 484.0, 434.0505, 484.0, 434.0505, 316.0, 361.0808, 316.0, 322.0" shape="poly" alt=":Control Flow" id="areadiagram_map_xWLSRbaGAqFkFXJZ_default" href="ControlFlow_RWLSRbaGAqFkFXJY.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','302.0, 322.0, 302.0, 355.0, 297.0, 368.0, 302.0, 370.17172, 302.0, 370.17172, 302.0, 376.0, 315.4186, 376.0, 484.0, 449.22223, 484.0, 449.22223, 484.0, 434.0505, 484.0, 434.0505, 316.0, 361.0808, 316.0, 322.0',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=mWLSRbaGAqFkFXJH/2.a. Als niet alle velden zijn ingevoerd/DecisionNode'),new Array('ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=.WLSRbaGAqFkFXJT/Unnamed/MergeNode')),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '302.0, 322.0, 302.0, 355.0, 297.0, 368.0, 302.0, 370.17172, 302.0, 370.17172, 302.0, 376.0, 315.4186, 376.0, 484.0, 449.22223, 484.0, 449.22223, 484.0, 434.0505, 484.0, 434.0505, 316.0, 361.0808, 316.0, 322.0')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="487.0, 466.0, 487.0, 526.0, 501.0, 526.0, 501.0, 466.0" coords2="487.0, 466.0, 487.0, 526.0, 501.0, 526.0, 501.0, 466.0" shape="poly" alt=":Control Flow" id="areadiagram_map_pWLSRbaGAqFkFXJf_default" href="ControlFlow_JWLSRbaGAqFkFXJe.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','487.0, 466.0, 487.0, 526.0, 501.0, 526.0, 501.0, 466.0',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=.WLSRbaGAqFkFXJT/Unnamed/MergeNode'),new Array('ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=JWLSRbaGAqFkFXJc/3. Gebruiker drukt op verzenden/Action')),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '487.0, 466.0, 487.0, 526.0, 501.0, 526.0, 501.0, 466.0')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="487.0, 566.0, 487.0, 626.0, 501.0, 626.0, 501.0, 566.0" coords2="487.0, 566.0, 487.0, 626.0, 501.0, 626.0, 501.0, 566.0" shape="poly" alt=":Control Flow" id="areadiagram_map_5WLSRbaGAqFkFXJl_default" href="ControlFlow_5WLSRbaGAqFkFXJk.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','487.0, 566.0, 487.0, 626.0, 501.0, 626.0, 501.0, 566.0',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=JWLSRbaGAqFkFXJc/3. Gebruiker drukt op verzenden/Action'),new Array('ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=5WLSRbaGAqFkFXJi/4. SYSTEM slaat de gegevens op in DatabaseClientRegistrationDAO/Action')),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '487.0, 566.0, 487.0, 626.0, 501.0, 626.0, 501.0, 566.0')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="487.0, 666.0, 487.0, 726.0, 501.0, 726.0, 501.0, 666.0" coords2="487.0, 666.0, 487.0, 726.0, 501.0, 726.0, 501.0, 666.0" shape="poly" alt=":Control Flow" id="areadiagram_map_1WLSRbaGAqFkFXJr_default" href="ControlFlow_1WLSRbaGAqFkFXJq.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','487.0, 666.0, 487.0, 726.0, 501.0, 726.0, 501.0, 666.0',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=5WLSRbaGAqFkFXJi/4. SYSTEM slaat de gegevens op in DatabaseClientRegistrationDAO/Action'),new Array('ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=VWLSRbaGAqFkFXJo/Unnamed/ActivityFinial')),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '487.0, 666.0, 487.0, 726.0, 501.0, 726.0, 501.0, 666.0')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="484, 726, 504, 758.0" coords2="484, 726, 504, 758.0" shape="rect" alt=":Activity Final Node" id="areadiagram_map_VWLSRbaGAqFkFXJo_default" href="ActivityFinalNode_lWLSRbaGAqFkFXJn.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','484, 726, 504, 746',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('null/Scenario/GenericModel','ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=1WLSRbaGAqFkFXJr/Unnamed/ActivityControlFlow'),new Array()),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '484, 726, 504, 746')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="305, 626, 684, 678.0" coords2="305, 626, 684, 678.0" shape="rect" alt="4. SYSTEM slaat de gegevens op in DatabaseClientRegistrationDAO:Action" id="areadiagram_map_5WLSRbaGAqFkFXJi_default" href="ActivityAction_ZWLSRbaGAqFkFXJh.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','305, 626, 684, 666',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('null/slaat de gegevens op in 7yAH2baFS_gYVkZj:l_6YabaFS_gYVhcw/GenericModel','ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=5WLSRbaGAqFkFXJl/Unnamed/ActivityControlFlow'),new Array('ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=1WLSRbaGAqFkFXJr/Unnamed/ActivityControlFlow')),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '305, 626, 684, 666')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="396, 526, 593, 578.0" coords2="396, 526, 593, 578.0" shape="rect" alt="3. Gebruiker drukt op verzenden:Action" id="areadiagram_map_JWLSRbaGAqFkFXJc_default" href="ActivityAction_xWLSRbaGAqFkFXJb.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','396, 526, 593, 566',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('null/Gebruiker drukt op[style font-bold: true;] verzenden[/style]/GenericModel','ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=pWLSRbaGAqFkFXJf/Unnamed/ActivityControlFlow'),new Array('ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=5WLSRbaGAqFkFXJl/Unnamed/ActivityControlFlow')),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '396, 526, 593, 566')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="484, 426, 504, 478.0" coords2="484, 426, 504, 478.0" shape="rect" alt=":Merge Node" id="areadiagram_map_.WLSRbaGAqFkFXJT_default" href="MergeNode_uWLSRbaGAqFkFXJS.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','484, 426, 504, 466',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('null/Als niet alle velden zijn ingevoerd/GenericModel','ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=hWLSRbaGAqFkFXJW/Unnamed/ActivityControlFlow','ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=xWLSRbaGAqFkFXJZ/Unnamed/ActivityControlFlow'),new Array('ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=pWLSRbaGAqFkFXJf/Unnamed/ActivityControlFlow')),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '484, 426, 504, 466')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="534, 282, 825, 334.0" coords2="534, 282, 825, 334.0" shape="rect" alt="2.a.1. SYSTEM "Voer AUB alle gevraagde velden in":Action" id="areadiagram_map_2WLSRbaGAqFkFXJN_default" href="ActivityAction_WWLSRbaGAqFkFXJM.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','534, 282, 825, 322',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('null/&#x22;Voer AUB alle gevraagde velden in&#x22;/GenericModel','ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=OWLSRbaGAqFkFXJQ/Unnamed/ActivityControlFlow'),new Array('ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=hWLSRbaGAqFkFXJW/Unnamed/ActivityControlFlow')),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '534, 282, 825, 322')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="299, 282, 319, 334.0" coords2="299, 282, 319, 334.0" shape="rect" alt="2.a. Als niet alle velden zijn ingevoerd:Decision Node" id="areadiagram_map_mWLSRbaGAqFkFXJH_default" href="DecisionNode_6WLSRbaGAqFkFXJG.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','299, 282, 319, 322',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('null/Als niet alle velden zijn ingevoerd/GenericModel','ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=WWLSRbaGAqFkFXJK/Unnamed/ActivityControlFlow'),new Array('ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=OWLSRbaGAqFkFXJQ/Unnamed/ActivityControlFlow','ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=xWLSRbaGAqFkFXJZ/Unnamed/ActivityControlFlow')),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '299, 282, 319, 322')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="2, 182, 617, 234.0" coords2="2, 182, 617, 234.0" shape="rect" alt="2. Gebruiker voert voornaam, achternaam, adres, bedrijfsnaam, telefoonnummer, VATnummer, KVKnummer in:Action" id="areadiagram_map_qWLSRbaGAqFkFXJB_default" href="ActivityAction_yWLSRbaGAqFkFXJA.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','2, 182, 617, 222',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('null/Gebruiker voert voornaam, achternaam, adres, bedrijfsnaam, telefoonnummer, VATnummer, KVKnummer in/GenericModel','ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=qWLSRbaGAqFkFXJE/Unnamed/ActivityControlFlow'),new Array('ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=WWLSRbaGAqFkFXJK/Unnamed/ActivityControlFlow')),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '2, 182, 617, 222')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="223, 82, 395, 134.0" coords2="223, 82, 395, 134.0" shape="rect" alt="1. Gebruiker start applicatie:Action" id="areadiagram_map_kWLSRbaGAqFkFXI6_default" href="ActivityAction_IWLSRbaGAqFkFXI5.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','223, 82, 395, 122',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('null/Gebruiker start applicatie/GenericModel','ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=SWLSRbaGAqFkFXI./Unnamed/ActivityControlFlow'),new Array('ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=qWLSRbaGAqFkFXJE/Unnamed/ActivityControlFlow')),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '223, 82, 395, 122')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="298, 2, 320, 34.0" coords2="298, 2, 320, 34.0" shape="rect" alt=":Initial Node" id="areadiagram_map_gWLSRbaGAqFkFXI3_default" href="InitialNode_HmLSRbaGAqFkFXI2.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','298, 2, 320, 22',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('null/Scenario/GenericModel'),new Array('ActivityDiagram_zmLSRbaGAqFkFXI0.html?shapeid=SWLSRbaGAqFkFXI./Unnamed/ActivityControlFlow')),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '298, 2, 320, 22')" onmousedown="clearSpotLight();"/>
+</map>
+				</td>
+			</tr>
+		</table>
+		<p>
+		</p>
+	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+				Model Elements			</td>
+		</tr>
+		<tr>
+			<td style="height: 5px">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="4" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="30%">
+<span class="TableHeaderText">Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td>
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/ActivityFinial.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/ActivityFinial.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="ActivityFinalNode_lWLSRbaGAqFkFXJn.html" class="ItemLink">N/A : Activity Final Node</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Action.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Action.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="ActivityAction_ZWLSRbaGAqFkFXJh.html" class="ItemLink">4. SYSTEM slaat de gegevens op in DatabaseClientRegistrationDAO : Action</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Action.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Action.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="ActivityAction_xWLSRbaGAqFkFXJb.html" class="ItemLink">3. Gebruiker drukt op verzenden : Action</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/MergeNode.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/MergeNode.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="MergeNode_uWLSRbaGAqFkFXJS.html" class="ItemLink">N/A : Merge Node</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Action.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Action.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="ActivityAction_WWLSRbaGAqFkFXJM.html" class="ItemLink">2.a.1. SYSTEM "Voer AUB alle gevraagde velden in" : Action</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/DecisionNode.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/DecisionNode.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="DecisionNode_6WLSRbaGAqFkFXJG.html" class="ItemLink">2.a. Als niet alle velden zijn ingevoerd : Decision Node</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Action.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Action.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="ActivityAction_yWLSRbaGAqFkFXJA.html" class="ItemLink">2. Gebruiker voert voornaam, achternaam, adres, bedrijfsnaam, telefoonnummer, VATnummer, KVKnummer in : Action</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Action.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Action.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="ActivityAction_IWLSRbaGAqFkFXI5.html" class="ItemLink">1. Gebruiker start applicatie : Action</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/InitialNode.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/InitialNode.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="InitialNode_HmLSRbaGAqFkFXI2.html" class="ItemLink">N/A : Initial Node</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<div style="height: 20px">
+	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		JavaBlok2.1	</div>
+</body>
+</html>
