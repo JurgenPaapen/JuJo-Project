@@ -11,9 +11,9 @@ public class ClientRegistrationDAO {
             connection.executeSqlDmlStatement(query);
             connection.closeConnection();
         } catch (Exception e) {
-            System.out.println("oeps");
             System.out.println(e.getMessage());
 
         }
+
     }
 }

@@ -1,5 +1,8 @@
 package clockyourhours.DomainModelLayer;
 
+import clockyourhours.Main.DataIO;
+
+import java.io.File;
 import java.io.Serializable;
 import java.util.*;
 
@@ -14,6 +17,8 @@ public class Client implements Serializable {
 		private String email;
         private List<Project> projects = new ArrayList<>();
 
+        private long serialVersionUID = 1L;
+
 	public Client(int ID, String companyName, String address, String zipCode, String city, String country, String email) {
 		this.ID = ID;
 		this.companyName = companyName;
@@ -23,6 +28,82 @@ public class Client implements Serializable {
 		this.country = country;
 		this.email = email;
 	}
+
+    public static void main(String[] args) {
+
+/**
+ * code which we used to export to the file It contains client data and connected projects and tasks within those projects.
+ * <p>
+ * timer test to see whether methods in other package and other classes can be reached from the main class
+ * We will not implement this method in the final application but will use this code in the UI
+ */
+
+        Client c1 =  new Client(1, "Jansen Bouw", "Mary Zeldenrustlaan 165", "5122CH", "Rijen", "Netherlands", "joostoomen@hotmail.com");
+        Project p1 = new Project("Dakkapel", c1);
+        Task p1_task1 = new Task("opbouw", 25);
+        p1.addTask(p1_task1);
+        Task p1_task2 = new Task("afwerking", 45);
+        p1.addTask(p1_task2);
+
+        Project p2 = new Project("Tuinhuis", c1);
+        Task p2_task1 = new Task("grondwerk", 25);
+        p2.addTask(p2_task1);
+        Task p2_task2 = new Task("opbouw", 45);
+        p2.addTask(p2_task2);
+
+        c1.addProject(p1);
+        c1.addProject(p2);
+
+
+        Client c2 = new Client(2, "fritsen Bouw", "Mary kees 165", "8765GB", "Groningen", "Netherlands", "fritsen@hotmail.com");
+        Project c2_p1 = new Project("Keuken", c2);
+        Task c2_p1_task1 = new Task("afwerking", 35);
+        c2_p1.addTask(c2_p1_task1);
+        Task c2_p1_task2 = new Task("inmeten", 35);
+        c2_p1.addTask(c2_p1_task2);
+
+        Project c2_p2 = new Project("Kozijnen", c2);
+        Task c2_p2_task1 = new Task("inmeten", 95);
+        c2_p2.addTask(c2_p2_task1);
+        Task c2_p2_task2 = new Task("plaatsen", 65);
+        c2_p2.addTask(c2_p2_task2);
+
+        c2.addProject(c2_p1);
+        c2.addProject(c2_p2);
+
+        Client c3 = new Client(3, "Paapen Electra", "Mary truus 165", "4876PL", "Kaatsheuvel", "Netherlands", "Paapen@hotmail.com");
+        Project c3_p1 = new Project("Domotica", c3);
+        Task c3_p1_task1 = new Task("voorlichting", 125);
+        c3_p1.addTask(c3_p1_task1);
+        Task c3_p1_task2 = new Task("hulp op afstand", 90);
+        c3_p1.addTask(c3_p1_task2);
+
+        Project c3_p2 = new Project("Meterkast", c3);
+        Task c3_p2_task1 = new Task("hoofdschakelaar omzeilen", 85);
+        c3_p2.addTask(c3_p2_task1);
+        Task c3_p2_task2 = new Task("wietplantage aanleggen", 145);
+        c3_p2.addTask(c3_p2_task2);
+
+        c3.addProject(c3_p1);
+        c3.addProject(c3_p2);
+
+       ArrayList<Client> clients = new ArrayList<>(Arrays.asList(c1,c2,c3));
+
+        /**
+         * Read and write path directory for file with data
+         */
+
+        File tempFile = new File("txtfiles/", "tempfile.obj");
+        String tempFilePath = tempFile.getAbsolutePath();
+
+
+        /**
+         * Code we used to write the data to a file
+         */
+
+        System.out.println(tempFilePath);
+        DataIO.writeToObjectFile(tempFilePath, clients);
+    }
 
     public int getID() {
         return ID;

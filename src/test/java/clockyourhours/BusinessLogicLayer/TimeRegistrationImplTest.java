@@ -29,6 +29,7 @@ class TimeRegistrationImplTest {
 
         //Assert
         Assert.assertEquals(diff, 3);
+        System.out.println("Tijdsverschil gemeten is : " + diff + " seconden");
 
     }
 }

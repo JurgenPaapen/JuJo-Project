@@ -10,21 +10,21 @@ import static org.junit.Assert.assertTrue;
 
 class DatabaseConnectionTest {
 
-    @Test
-    void connectionIsOpen() {
-    }
-
-    @Test
-    void closeConnection() {
-    }
-
-    @Test
-    void executeSQLSelectStatement() {
-    }
-
-    @Test
-    void executeSqlDmlStatement() {
-    }
+//    @Test
+//    void connectionIsOpen() {
+//    }
+//
+//    @Test
+//    void closeConnection() {
+//    }
+//
+//    @Test
+//    void executeSQLSelectStatement() {
+//    }
+//
+//    @Test
+//    void executeSqlDmlStatement() {
+//    }
 
     @Test
     @DisplayName("Try whether connection with database can be made")
@@ -38,6 +38,7 @@ class DatabaseConnectionTest {
         }
 
         // Assert
+        System.out.println(result);
         assertTrue("database connection successfully established", result);
         assertTrue("result set no null", rs != null);
     }

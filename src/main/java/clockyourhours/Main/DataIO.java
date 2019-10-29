@@ -13,7 +13,7 @@ public class DataIO {
      */
 
     public static void writeToObjectFile(String fileName, ArrayList client) {
-        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileName))) {
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(fileName)))) {
             objectOutputStream.writeObject(client);
         } catch (IOException e) {
             e.printStackTrace();
@@ -22,7 +22,7 @@ public class DataIO {
 
     public static ArrayList<Client> readFromObjectFile(String fileName) {
         ArrayList<Client> registration = null;
-        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(fileName))) {
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new BufferedInputStream(new FileInputStream(fileName)))) {
             registration = (ArrayList<Client>) objectInputStream.readObject();
         } catch (IOException e) {
             e.printStackTrace();
