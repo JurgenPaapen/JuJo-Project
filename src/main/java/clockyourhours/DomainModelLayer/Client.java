@@ -7,27 +7,25 @@ import java.io.Serializable;
 import java.util.*;
 
 
-public class Client implements Serializable {
-		private int ID;
-		private String companyName;
-		private String address;
-		private String zipCode;
-		private String city;
-		private String country;
-		private String email;
-        private List<Project> projects = new ArrayList<>();
+public class Client extends Company implements Serializable {
 
+
+		private int ID;
+        private List<Project> projects = new ArrayList<>();
         private long serialVersionUID = 1L;
 
-	public Client(int ID, String companyName, String address, String zipCode, String city, String country, String email) {
-		this.ID = ID;
-		this.companyName = companyName;
-		this.address = address;
-		this.zipCode = zipCode;
-		this.city = city;
-		this.country = country;
-		this.email = email;
+    public Client(String companyName, String address, String zipCode, String city, String country, String email, int ID, List<Project> projects) {
+        super(companyName, address, zipCode, city, country, email);
+        this.ID = ID;
+        this.projects = projects;
+    }
+
+    public Client(int ID, String companyName, String address, String zipCode, String city, String country, String email) {
+        super(companyName, address, zipCode, city, country, email);
+        this.ID = ID;
 	}
+
+
 
     public static void main(String[] args) {
 

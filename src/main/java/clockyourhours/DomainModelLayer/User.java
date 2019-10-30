@@ -2,22 +2,26 @@ package clockyourhours.DomainModelLayer;
 
 import java.util.Collection;
 
-public class User {
+public class User extends Company {
 
-	Collection<Project> projectID2;
-	Collection<Project> project;
 	private int ID;
 	private String firstName;
 	private String lastName;
-	private String address;
-	private String houseNumber;
-	private String zippCode;
-	private String city;
 	private Integer phoneNumber;
-	private String email;
 	private String VATNumber;
 	private Integer KVKNumber;
-	private String companyName;
+
+
+	public User(String companyName, String address, String zipCode, String city, String country, String email, Collection<Project> projectID2, Collection<Project> project, int ID, String firstName, String lastName, String address1, String houseNumber, String zippCode, String city1, Integer phoneNumber, String email1, String VATNumber, Integer KVKNumber, String companyName1) {
+		super(companyName, address, zipCode, city, country, email);
+		this.ID = ID;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phoneNumber = phoneNumber;
+		this.VATNumber = VATNumber;
+		this.KVKNumber = KVKNumber;
+
+	}
 
 	public void deleteClient() {
 		// TODO - implement User.deleteClient
@@ -57,6 +61,7 @@ public class User {
 	}
 
 	public User() {
+		super();
 		// TODO - implement User.User
 		throw new UnsupportedOperationException();
 	}
