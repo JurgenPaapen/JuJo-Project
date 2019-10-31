@@ -7,6 +7,7 @@ public class Task implements employeeCosts, Serializable {
 
 	private String taskName;
 	private Integer costPerHour;
+	private Integer totalCosts;
 
     public Task(String name, Integer costPerHour) {
         this.taskName = name;
@@ -27,7 +28,9 @@ public class Task implements employeeCosts, Serializable {
     }
 
     @Override
-    public void costCalculation() {
-
+    public Integer costCalculation() {
+        totalCosts = 0;
+        totalCosts += costPerHour;
+        return totalCosts;
     }
 }

@@ -39,8 +39,9 @@ public class Project implements employeeCosts, Serializable {
 	}
 
     @Override
-    public void costCalculation() {
+    public Integer costCalculation() {
 
 
+        return null;
     }
 }

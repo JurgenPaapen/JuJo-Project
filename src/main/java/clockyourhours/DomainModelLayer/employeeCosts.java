@@ -2,7 +2,7 @@ package clockyourhours.DomainModelLayer;
 
 public interface employeeCosts {
 
-    public void costCalculation();
+    public Integer costCalculation();
 
 
 }
