@@ -10,11 +10,13 @@ public class User extends Company {
 	private Integer phoneNumber;
 	private String VATNumber;
 	private Integer KVKNumber;
+	private String companyName;
 
 
 	public User(String companyName, String address, String zipCode, String city, String country, String email, Collection<Project> projectID2, Collection<Project> project, int ID, String firstName, String lastName, String address1, String houseNumber, String zippCode, String city1, Integer phoneNumber, String email1, String VATNumber, Integer KVKNumber, String companyName1) {
 		super(companyName, address, zipCode, city, country, email);
 		this.ID = ID;
+//		this.companyName = companyName;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.phoneNumber = phoneNumber;

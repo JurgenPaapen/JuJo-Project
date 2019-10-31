@@ -6,6 +6,7 @@ public class Project implements employeeCosts, Serializable {
 	private String projectName;
 	private List<Task> tasks = new ArrayList<>();
 	private Client clientForThisProject;
+    private long serialVersionUID = 1L;
 
 
     public Project(String name, Client clientForThisProject) {

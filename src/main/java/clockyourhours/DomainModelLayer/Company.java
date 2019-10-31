@@ -1,12 +1,13 @@
 package clockyourhours.DomainModelLayer;
 
 public class Company {
-    protected String companyName;
+
     protected String address;
     protected String zipCode;
     protected String city;
     protected String country;
     protected String email;
+    protected String companyName;
 
     public Company() {
         this.companyName = companyName;

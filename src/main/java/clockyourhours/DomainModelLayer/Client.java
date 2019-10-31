@@ -11,17 +11,20 @@ public class Client extends Company implements Serializable {
 
 
 		private int ID;
+		private String companyName;
         private List<Project> projects = new ArrayList<>();
         private long serialVersionUID = 1L;
 
-    public Client(String companyName, String address, String zipCode, String city, String country, String email, int ID, List<Project> projects) {
+    public Client(String address, String zipCode, String city, String country, String email, int ID, String companyName, List<Project> projects) {
         super(companyName, address, zipCode, city, country, email);
+        this.companyName = companyName;
         this.ID = ID;
         this.projects = projects;
     }
 
     public Client(int ID, String companyName, String address, String zipCode, String city, String country, String email) {
         super(companyName, address, zipCode, city, country, email);
+        this.companyName = companyName;
         this.ID = ID;
 	}
 
@@ -129,7 +132,7 @@ public class Client extends Company implements Serializable {
      * @return companyname of client
      */
     public String getCompanyName() {
-        return companyName;
+        return this.companyName;
     }
 
     /**
@@ -145,7 +148,7 @@ public class Client extends Company implements Serializable {
         return "Client{" +
                 "project=" + projects +
                 ", ID=" + ID +
-                ", companyName='" + companyName + '\'' +
+                ", companyName='" + super.companyName + '\'' +
                 ", address='" + address + '\'' +
                 ", zipCode='" + zipCode + '\'' +
                 ", city='" + city + '\'' +
